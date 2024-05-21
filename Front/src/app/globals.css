@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "IgNormal";
+  src        : url(../styles/font/InstagramSans.ttf);
+}
+
+@font-face {
+  font-family: "IgBold";
+  src        : url(../styles/font/InstagramSansBold.ttf);
+}
+
+@font-face {
+  font-family: "IgLight";
+  src        : url(../styles/font/InstagramSansLight.ttf);
+}
+
+@font-face {
+  font-family: "IgMedium";
+  src        : url(../styles/font/InstagramSansMedium.ttf);
+}
+
+@font-face {
+  font-family: "Lobster";
+  src        : url(../styles/font/Lobster-Regular.ttf);
+}
+
+:root {
+
+  --background-color      : black;
+  --background-color-hover: #202020;
+  --nav-shadow            : rgba(27, 27, 27, 0.491);
+  --hover-color           : #313131;
+  --text-color            : white;
+  --border-navbar-button  : 12px;
+  --primary-color         : #14acfc;
+  --primary-color-hover   : #e0f1ff;
+  --background-color-modal: #e0f1ff;
+  --modal-hover           : #000000;
+  --white-color           : white;
+  --black-color           : black;
+  --grey-fade             : rgb(62, 62, 62);
+  --modal-shadow          : black;
+  --unread-color          : black;
+}
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-family     : "IgNormal";
+  font-size       : 14px;
+  scrollbar-gutter: stable;
+}
+
+* {
+  box-sizing: border-box;
+  margin    : 0;
+  padding   : 0;
+  border    : 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color          : var(--text-color);
+}
+
+.tippy-box {
+  max-width    : none !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background   : var(--background-color);
+  border-radius: 10px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background: rgba(234, 234, 234, 0.214); */
+  border-radius: 10px;
+  background   : var(--text-color);
+}
+
+/* Navbar */
+nav {
+  display         : flex;
+  height          : 100vh;
+  background-color: var(--background-color);
+  max-width       : 244px;
+  min-width       : 72px;
+
+  position: fixed;
+  left    : 0;
+}
+
+@media (max-width: 768px) {
+
+  nav {
+    width    : 100%;
+    height   : 48px;
+    bottom   : 0;
+    min-width: 100%;
+
+  }
+
+
+}
+
+/* THEME */
+
+.theme-dark,
+.theme-light {
+  width   : 100%;
+  display : flex;
+  position: relative;
+}
+
+.theme-light {
+  --text-color            : black;
+  --background-color      : white;
+  --background-color-hover: rgb(239, 239, 239);
+  --hover-color           : #e9e9e9;
+  --white-color           : black;
+  --black-color           : white;
+  --primary-color-hover   : #282828;
+  --grey-fade             : #eeeeee;
+  --modal-shadow          : rgb(129, 129, 129);
+  --modal-hover           : #9ed3ff;
+  --unread-color          : white;
+
+}
+
+.theme-dark {
+  --background-color-modal: #282828;
+}
+
+.theme-light::before,
+.theme-dark::before {
+  content         : "";
+  height          : 100%;
+  width           : 1px;
+  background-color: black;
+  position        : absolute;
+  top             : 0;
+  right           : 0;
+
+}
+
+video::-webkit-media-controls-fullscreen-button,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-time-remaining-display {
+  display: none;
+}

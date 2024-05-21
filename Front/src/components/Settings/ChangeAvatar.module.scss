@@ -1,0 +1,89 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.infor_avatar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    .input_avatar {
+        // width: 120px;
+        padding: 0 8px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: var(--primary-color);
+        border-radius: 8px;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        color: var(--text-color);
+        &:hover {
+            color: var(--background-color);
+            background-color: var(--primary-color-hover);
+        }
+        input {
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        input::file-selector-button {
+            cursor: pointer;
+        }
+    }
+}
+.preview_avatar {
+    display: flex;
+    gap: 65px;
+    align-items: center;
+    flex: 1;
+    gap: 16px;
+    flex-direction: column;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--primary-color);
+}
+.current_avatar {
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .button_save {
+        // position: absolute;
+
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        padding: 8px 16px;
+        border-radius: 8px;
+        margin: auto;
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+            color: var(--background-color);
+            background-color: var(--primary-color-hover);
+        }
+    }
+}
+// ANIMATION
+
+@keyframes open_edit_pass {
+    from {
+        opacity: 0.5;
+        height: 100px;
+    }
+    to {
+        opacity: 1;
+
+        height: 300px;
+    }
+}

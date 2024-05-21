@@ -1,0 +1,123 @@
+.wrapper {
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    :nth-child(4),
+    :nth-child(8) {
+        &::before {
+            display: none;
+        }
+    }
+}
+.note {
+    // padding: 0 0 0 8px;
+    font-size: 12px;
+    font-style: italic;
+    user-select: none;
+}
+.infor_row {
+    font-size: 14px;
+    width: 100%;
+    padding: 8px 0;
+    display: flex;
+    position: relative;
+    gap: 20px;
+    line-height: 100%;
+    align-items: center;
+    .label {
+        width: 90px;
+        position: relative;
+        user-select: none;
+
+        &::before {
+            position: absolute;
+            content: "";
+            right: -10px;
+            top: 0;
+            height: 100%;
+            width: 0.5px;
+            background-color: rgba(194, 194, 194, 0.187);
+        }
+    }
+
+    .content {
+        flex: 1;
+        font-family: IgMedium;
+        display: flex;
+        user-select: none;
+        .input_box {
+            width: 100%;
+            outline: none;
+            background-color: transparent;
+            color: var(--text-color);
+            font-family: IgMedium;
+            font-size: 14px;
+        }
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        bottom: -4px;
+        width: 100%;
+        height: 0.5px;
+        background-color: var(--text-color);
+    }
+}
+
+.line {
+    width: calc(100% + 40px);
+    height: 4px;
+    background-color: var(--background-color);
+    position: relative;
+    left: -20px;
+}
+
+.infor_avatar {
+    width: 100%;
+    flex: 1;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.change_button {
+    height: 100%;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    overflow: hidden;
+    user-select: none;
+
+    // box-shadow: 1px 1px 1px var(--nav-shadow);
+    cursor: pointer;
+    &:hover {
+        color: var(--background-color);
+        background-color: var(--primary-color-hover);
+    }
+}
+.gender_change {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    .gender {
+        opacity: 0.5;
+        cursor: pointer;
+        user-select: none;
+    }
+    .gender_active {
+        opacity: 1;
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+.cancel_button {
+    color: white;
+    background-color: rgb(91, 91, 91);
+}

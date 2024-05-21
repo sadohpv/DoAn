@@ -1,0 +1,114 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.avatar {
+  padding-top: 4px;
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.content {
+  display: flex;
+}
+.content p {
+  text-justify: distribute;
+}
+
+.text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.text div {
+  width: 100%;
+}
+.text div span {
+  width: 100% !important;
+}
+.text div span br {
+  display: none;
+}
+.text div span span {
+  width: 100%;
+}
+
+.like {
+  display: flex;
+  width: 36px;
+  height: 100%;
+  align-items: center;
+  padding-top: 8px;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+.like .like_button,
+.like .more_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.like .more_button {
+  display: none;
+}
+.like .more_button:hover {
+  background-color: var(--hover-color);
+}
+.like:hover .more_button {
+  display: flex;
+}
+
+.infor {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  color: rgb(139, 139, 139);
+}
+.infor .day {
+  font-family: IgLight;
+}
+.infor .like_number {
+  font-family: IgMedium;
+}
+
+.heartAnimation {
+  animation: heartBeat 0.5s ease-in-out forwards;
+}
+
+@keyframes heartBeat {
+  0% {
+    scale: 0.8;
+  }
+  33% {
+    scale: 1;
+  }
+  66% {
+    scale: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.more_less-button {
+  cursor: pointer;
+  font-family: IgMedium;
+}
+.more_less-button:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=CommentCard.module.css.map */

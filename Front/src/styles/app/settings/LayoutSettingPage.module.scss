@@ -1,0 +1,96 @@
+.wrapper {
+    color: var(--text-color);
+    display: flex;
+    min-height: 100vh;
+    height: auto;
+
+    padding-left: 244px;
+    .main {
+        width: 100%;
+        // background-color: red;
+        padding: 30px;
+        display: flex;
+        gap: 20px;
+    }
+    .side_bar {
+        width: 220px;
+        height: 150px;
+        // height: auto;
+        border-radius: 8px;
+        // background-color: var(--background-color-modal);
+        padding: 8px;
+        // box-shadow: 1px 1px 1px 1px var(--modal-shadow);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        gap: 10px;
+        &::before {
+            position: absolute;
+            content: "";
+            width: 0.5px;
+            height: 100%;
+            background-color: var(--text-color);
+
+            right: 0;
+        }
+        .side_button {
+            display: flex;
+            width: 100%;
+            height: 38px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            &::before {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 0.5px;
+                background-color: var(--text-color);
+                left: 0;
+                bottom: -5px;
+            }
+            font-family: IgMedium;
+            &:hover {
+                background-color: var(--primary-color-hover);
+                color: var(--background-color);
+               
+            }
+        }
+        .active {
+            cursor: default;
+            pointer-events: none;
+            user-select: none;
+            color: var(--primary-color);
+        }
+    }
+}
+
+.infor_wrapper {
+    // width: 100%;
+    flex: 1;
+    height: 100%;
+    border-radius: 8px;
+    background-color: var(--background-color-modal);
+    display: flex;
+}
+
+@media (max-width: 1260px) {
+    .wrapper {
+        padding-left: 72px;
+    }
+}
+// @media (max-width: 1160px) {
+//     .wrapper {
+//         padding-left: 72px;
+//     }
+// }
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding-left: 0px;
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+}

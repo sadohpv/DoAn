@@ -1,0 +1,134 @@
+{
+    "Login": {
+        "Login": "Login",
+        "Email": "Email",
+        "Password": "Password",
+        "Phonenumber": "Phone number",
+        "Register": "Register",
+        "Username": "Username",
+        "Gender": "Gender",
+        "Address": "Address",
+        "Re_Password": "Re-Password",
+        "This_is_unique": "This's unique and can't be changed",
+        "Double_click_to_change": "Double click to change"
+    },
+    "Navbar": {
+        "home": "Home",
+        "search": "Search",
+        "notify": "Notifications",
+        "create": "Create",
+        "setting": "Settings",
+        "more": "More",
+        "language": "Language",
+        "Theme": "Theme",
+        "Light": "Light",
+        "Dark": "Dark",
+        "logout": "Logout"
+    },
+    "Submain": {
+        "suggested": "Suggested for you",
+        "see_all": "See all",
+        "Confirm_unfollow": "Are you sure that you want unfollow",
+        "Confirm_unfollow_message": "You won't often see this person's posts."
+    },
+    "Quotes": {
+        "quote_1": "The difference between the novice and the master is that the master has failed more times than the novice has tried",
+        "quote_2": "There are two reasons a person feels the desire to teach something. Either he wants to pass on his successes or he wants to pass on his failures",
+        "quote_3": "In every time, in every world, the strong polish their fangs while the weak polish their wisdom"
+    },
+    "Common": {
+        "posts": "posts",
+        "Posts": "Posts",
+        "Videos": "Videos",
+        "Photos": "Photos",
+        "Video": "Video",
+        "Photo": "Photo",
+        "followers": "followers",
+        "following": "following",
+        "Follow": "Follow",
+        "Unfollow": "Unfollow",
+        "ShowMore": "More",
+        "ShowLess": "Hide",
+        "Delete": "Delete",
+        "Report": "Report",
+        "Cancel": "Cancel",
+        "Reply": "Reply",
+        "Edit": "Edit",
+        "Followed": "Followed",
+        "Content": "Content",
+        "Male": "Male",
+        "Female": "Female",
+        "Save": "Save",
+        "Slug": "Link profile",
+        "Copy": "Copy",
+        "Unsave": "Unsave",
+        "Save_post" : "Saved post"
+    },
+    "Post": {
+        "Share": "Share",
+        "Like": "Like",
+        "Likes": " Likes",
+        "Comments": " Comments",
+        "Unlike": "Unlike",
+        "Save": "Save",
+        "Show_all_comment": "Show all comment",
+        "Next": "Next",
+        "Crop": "Crop",
+        "New_post": "New post",
+        "Upload_image": "Upload image",
+        "Copy_link_post": "Copy post's link",
+        "Private_post": "Set to private",
+        "Public": "Public",
+        "Private": "Private",
+        "Publish_post": "Set to public",
+        "Drag_something": "Drag photo and video here",
+        "Select_from_com": "Select from computer",
+        "Public_message": "Your post will be setting default as public post. Click here if you want to change it to private. Remember only friend can see your private post on your's profile page",
+        "Private_message": "Your post is been setted as private post. It's only show on your profile page for your friends. Click here to change it to public so everyone can see",
+        "Delete_post_message": "( All comment in this has been deleted. Check them again to make sure that you wanna delete this post )",
+        "Delete_success": "Delete post success",
+        "Delete_failed": "Something wrong ! Try it later."
+    },
+    "Comment": {
+        "Delete_comment_message": "Are you sure that you wanna delete this comment ?",
+        "Report_comment_message": "Tell us what is wrong with this comment ?"
+    },
+    "UserPage": {
+        "No_videos": "No videos !",
+        "No_photos": "No photos !",
+        "No_posts": "No posts !",
+        "Add_Friend": "Add Friend",
+        "Unfriend": "Unfriend",
+
+        "Cancel_add_friend": "Cancel request",
+        "Confirm_unfriend": "Are you sure don't wanna make friend with ",
+        "Accept_add_friend": "Accept friend",
+        "Null_post": "This post is private but author is not your friend. Make friend with them to see this post"
+    },
+    "Search": {
+        "Not_found": "Are you sure you know their name ?",
+        "No_keyword": "Knock Knock ! Are you missing something ?"
+    },
+    "Notify": {
+        "friend_request_1": "You received a friend request from ",
+        "friend_request_2": ", don't let them wait !!",
+        "comment_tag_1": " tag you in a comment."
+    },
+    "Settings": {
+        "General": "General information",
+        "Friends": "Friends",
+        "Posts": "Posts",
+        "Change_data_message_success": "Change data success !",
+        "Change_data_message_failed": "Something wrong happen ! Try later.",
+        "Current_pass": "Current password",
+        "New_pass": "New password",
+        "Re_new_pass": "Repeat new password",
+        "Re_new_pass_note": "Repeat password is not the same with new password",
+        "Re_empty_pass_note": "Are you missing something ? Check it out",
+        "Same_pass": "New password is not as same as current password",
+        "Not_current_pass": "Your current pass is not correct ! Check it again",
+        "Check_change_avatar": "Check your avatar one time again before save",
+        "Image": "Image",
+        "Video": "Video"
+    }
+}

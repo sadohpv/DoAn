@@ -1,0 +1,146 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.infor_row {
+    font-size: 14px;
+    width: 100%;
+    padding: 8px 0;
+    display: flex;
+    position: relative;
+    gap: 20px;
+    line-height: 100%;
+    align-items: center;
+    .label {
+        width: 90px;
+        position: relative;
+        user-select: none;
+
+        &::before {
+            position: absolute;
+            content: "";
+            right: -10px;
+            top: 0;
+            height: 100%;
+            width: 0.5px;
+            background-color: rgba(194, 194, 194, 0.187);
+        }
+    }
+
+    .content {
+        flex: 1;
+        font-family: IgMedium;
+        display: flex;
+        user-select: none;
+        .input_box {
+            width: 100%;
+            outline: none;
+            background-color: transparent;
+            color: var(--text-color);
+            font-family: IgMedium;
+            font-size: 14px;
+        }
+    }
+}
+
+.change_button {
+    height: 100%;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    overflow: hidden;
+    user-select: none;
+
+    // box-shadow: 1px 1px 1px var(--nav-shadow);
+    cursor: pointer;
+    &:hover {
+        color: var(--background-color);
+        background-color: var(--primary-color-hover);
+    }
+}
+
+.main {
+    // height: auto;
+    padding-top: 20px;
+    overflow: hidden;
+    // background-color: red;
+    animation: open_edit_pass 0.5s ease-in-out forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .input_box {
+        font-family: IgMedium;
+        display: flex;
+        gap: 20px;
+        // padding: 8px;
+        justify-content: center;
+        .label {
+            width: 135px;
+            display: flex;
+            align-items: center;
+        }
+        input {
+            background-color: white;
+            // font-family: IgMedium;
+            flex: 1;
+            // padding: 8px;
+            max-width: 360px;
+            height: 34px;
+            outline: none;
+            color: black;
+            font-size: 14px;
+            // line-height: 18px;
+            padding-top: 5px;
+            padding: 0 16px;
+            border-radius: 8px;
+        }
+    }
+}
+.check_re_pass {
+    display: flex;
+    justify-content: center;
+    max-width: 515px;
+    color: rgb(255, 63, 63);
+    font-style: italic;
+    text-align: right;
+}
+.cancel_button {
+    color: white;
+    background-color: rgb(91, 91, 91);
+}
+.change_pass_button {
+    height: 100%;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    overflow: hidden;
+    user-select: none;
+
+    // box-shadow: 1px 1px 1px var(--nav-shadow);
+    cursor: pointer;
+    &:hover {
+        color: var(--background-color);
+        background-color: var(--primary-color-hover);
+    }
+}
+// ANIMATION
+
+@keyframes open_edit_pass {
+    from {
+        opacity: 0.5;
+        height: 20px;
+    }
+    to {
+        opacity: 1;
+
+        height: 200px;
+    }
+}

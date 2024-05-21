@@ -1,0 +1,63 @@
+.wrapper {
+    width: 100%;
+    height: 48px;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    .name {
+        flex: 1;
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 0.5px;
+        bottom: -7px;
+        background-color: var(--grey-fade);
+    }
+}
+.follow {
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    color: var(--primary-color);
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: var(--primary-color-hover);
+    }
+}
+.request {
+    svg {
+        line,
+        path {
+            stroke: rgb(255, 132, 0) !important;
+        }
+    }
+}
+.request2{
+    svg {
+        line,
+        path {
+            fill: rgb(255, 132, 0) !important;
+        }
+    }
+}
+.request3{
+    svg {
+        line,
+        path {
+            fill: var(--primary-color) !important;
+        }
+    }
+}
+.action {
+    display: flex;
+    gap: 12px;
+    .friend {
+        cursor: pointer;
+    }
+}

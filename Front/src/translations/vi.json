@@ -1,0 +1,131 @@
+{
+    "Login": {
+        "Login": "Đăng Nhập",
+        "Email": "Email",
+        "Password": "Mật khẩu",
+        "Phonenumber": "Số điện thoại",
+        "Register": "Đăng ký",
+        "Username": "Tên người dùng",
+        "Gender": "Giới tính",
+        "Address": "Địa chỉ",
+        "Re_Password": "Nhập lại mật khẩu",
+        "This_is_unique": "Thuộc tính này là duy nhất và không thể thay đổi",
+        "Double_click_to_change": "Ấn để chỉnh sửa"
+    },
+    "Navbar": {
+        "home": "Trang chủ",
+        "search": "Tìm kiếm",
+        "notify": "Thông báo",
+        "create": "Tạo",
+        "setting": "Cài đặt",
+        "more": "Thêm",
+        "language": "Ngôn ngữ",
+        "Theme": "Giao Diện",
+        "Light": "Sáng",
+        "Dark": "Tối",
+        "logout": "Đăng xuất"
+    },
+    "Submain": {
+        "suggested": "Gợi ý cho bạn",
+        "see_all": "Xem thêm",
+        "Confirm_unfollow": "Bạn có chắc chắn muốn bỏ theo dõi",
+        "Confirm_unfollow_message": "Bạn sẽ không thường xuyên thấy bài viết của người này."
+    },
+    "Quotes": {
+        "quote_1": "Sự khác biệt giữa người mới và bậc thầy là bậc thầy đã thất bại nhiều lần hơn so với người mới đã từng thử",
+        "quote_2": "Có hai lý do khiến một người cảm thấy muốn dạy điều gì đó. Hoặc là anh ta muốn truyền lại những thành công của mình hoặc anh ta muốn truyền lại những thất bại của mình",
+        "quote_3": "Trong mọi thời đại, trong mọi thế giới, kẻ mạnh đánh bóng răng nanh của mình trong khi kẻ yếu đánh bóng trí tuệ của mình"
+    },
+    "Common": {
+        "posts": "bài viết",
+        "Posts": "Bài viết",
+        "Videos": "Videos",
+        "Photos": "Ảnh",
+        "Video": "Video",
+        "Photo": "Ảnh",
+        "followers": "người theo dõi",
+        "following": "đang theo dõi",
+        "Follow": "Theo dõi",
+        "Unfollow": "Bỏ theo dõi",
+        "ShowMore": "Thêm",
+        "ShowLess": "Ẩn",
+        "Delete": "Xoá",
+        "Report": "Báo cáo",
+        "Cancel": "Huỷ",
+        "Reply": "Trả lời",
+        "Edit": "Chỉnh sửa",
+        "Followed": "Đã theo dõi",
+        "Content": "Nội dung",
+        "Male": "Nam",
+        "Female": "Nữ",
+        "Save": "Lưu",
+        "Slug": "Liên kết",
+        "Copy": "Sao chép",
+        "Unsave": "Xoá lưu",
+        "Save_post" : "Bài viết đã lưu"
+    },
+    "Post": {
+        "Share": "Chia sẻ",
+        "Like": "Thích",
+        "Likes": " Lượt thích",
+        "Comments": " Bình luận",
+        "Unlike": "Bỏ thích",
+        "Save": "Lưu",
+        "Show_all_comment": "Tất cả bình luận",
+        "Next": "Tiếp theo",
+        "Crop": "Chỉnh tỉ lệ",
+        "New_post": "Bài viết mới",
+        "Upload_image": "Tải ảnh lên",
+        "Copy_link_post": "Sao chép đường liên kết",
+        "Private_post": "Ẩn bài viết",
+        "Publish_post": "Công khai bài viết",
+        "Public": "Công khai",
+        "Private": "Riêng tư",
+        "Drag_something": "Kéo ảnh hoặc video",
+        "Select_from_com": "Chọn từ máy tính",
+        "Public_message": "Bài viết của bạn mặc định sẽ ở chế độ công khai. Ấn vào đây nếu muốn chuyển trạng thái thành riêng tư. Hãy nhớ chỉ bạn bè mới có thể thấy bài viết riêng tư trên trang cá nhân của bạn.",
+        "Private_message": "Bài viết của bạn đang được cài đặt ở chế độ riêng tư. Chỉ có bạn bè mới có thể thấy bài viết này trên trang cá nhân của bạn. Ấn vào đây nếu muốn chuyển trạng thái thành công khai để mọi người đều có thể thấy.",
+        "Delete_post_message": "( Tất cả bình luận ở bài viết này sẽ bị xoá. Kiểm tra lại lần nữa để chắc chắn bạn muốn xoá bài viết này )",
+        "Delete_success": "Xoá bài viết thành công",
+        "Delete_failed": "Có lỗi xảy ra ! Hãy thử lại sau."
+    },
+    "Comment": {
+        "Delete_comment_message": "Bạn chắc chắn muốn xoá bình luận này ?",
+        "Report_comment_message": "Báo cáo với chúng tôi nếu bình luận này vi phạm ?"
+    },
+    "UserPage": {
+        "No_videos": "Chưa có video nào !",
+        "No_photos": "Chưa có ảnh nào !",
+        "No_posts": "Chưa có bài viết nào !",
+        "Add_Friend": "Gửi lời mời kết bạn",
+        "Unfriend": "Huỷ kết bạn",
+        "Cancel_add_friend": "Huỷ lời mời",
+        "Confirm_unfriend": "Bạn có chắc không muốn làm bạn với ",
+        "Accept_add_friend": "Đồng ý",
+        "Null_post": "Chỉ bạn bè của tác giả có thể xem bài viết này, hãy kết bạn với họ !"
+    },
+    "Search": {
+        "Not_found": "Không có kết quả phù hợp với từ khoá ?",
+        "No_keyword": "Hình như bạn quên từ khoá tìm kiếm thì phải ?"
+    },
+    "Notify": {
+        "friend_request_1": "Bạn nhận được một lời mời kết bạn từ ",
+        "friend_request_2": ", đừng để họ chờ nhé !!",
+        "comment_tag_1": " đã nhắc đến bạn trong một bình luận."
+    },
+    "Settings": {
+        "General": "Thông tin cơ bản",
+        "Friends": "Bạn bè",
+        "Posts": "Bài viết",
+        "Change_data_message_success": "Thay đổi thành công !",
+        "Change_data_message_failed": "Có lỗi xảy ra ! Thử lại sau.",
+        "Current_pass": "Mật khẩu hiện tại",
+        "New_pass": "Mật khẩu mới",
+        "Re_new_pass": "Nhập lại mật khẩu mới",
+        "Re_new_pass_note": "Mật khẩu xác nhận không giống mật khẩu bạn muốn đổi",
+        "Re_empty_pass_note" : "Bạn nhập thiếu gì đó ! Hãy kiểm tra lại",
+        "Same_pass" : "Mật khẩu mới không được giống mật khẩu hiện tại",
+        "Not_current_pass": "Mật khẩu hiện tại không đúng ! Hãy kiểm tra lại",
+        "Check_change_avatar" : "Kiểm tra lại ảnh đại diện của bạn một lần nữa trước khi lưu"
+    }
+}

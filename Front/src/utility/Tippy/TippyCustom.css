@@ -1,0 +1,31 @@
+.tippy-box[data-theme~='element'][data-placement~='bottom-start'] {
+    /* margin-left     : -2px; */
+    background-color: transparent !important;
+    overflow: hidden;
+}
+
+.tippy-box[data-theme~='element'] .tippy-content {
+    padding            : 0 !important;
+    /* background-color: transparent !important; */
+
+}
+
+/* .theme-light .tippy-box[data-theme~='element'] .tippy-content {
+
+    padding         : 0 !important;
+    background-color: var(--background-color-modal) !important;
+
+
+} */
+[data-tippy-root]{
+    border-radius: 8px;
+    overflow: hidden;
+}
+/* .tippy-box{
+    border-radius: 12px;
+    overflow: hidden;
+}
+.tippy-content{
+    border-radius: 12px;
+    overflow: hidden;
+} */

@@ -1,0 +1,97 @@
+.wrapper {
+    width: 100%;
+    // height: 60px;
+    // background-color: var(--hover-color);
+    padding: 8px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .main {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex: 1;
+    }
+    .avatar {
+        display: flex;
+        height: 44px;
+        width: 44px;
+    }
+    .infor {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+
+        .username {
+            font-family: "IgMedium";
+        }
+        .fullname {
+            font-family: "IgLight";
+            user-select: none;
+        }
+    }
+}
+
+.button_follow {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-family: IgMedium;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+        color: var(--primary-color-hover);
+    }
+}
+
+.modal_confirm {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(209, 209, 209, 0.244);
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box {
+    width: 260px;
+    height: 130px;
+    background-color: var(--background-color-modal);
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   color: var(--text-color);
+    box-shadow: var(--background-color-modal);
+    text-align: center;
+    .action {
+        width: 100%;
+        height: 36px;
+        user-select: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .confirm_action-button {
+            height: 36px;
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--background-color);
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

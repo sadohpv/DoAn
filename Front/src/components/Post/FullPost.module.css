@@ -1,0 +1,229 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: var(--text-color);
+  align-items: center;
+  justify-content: center;
+}
+.wrapper .full_comment {
+  width: 500px;
+  height: 95vh;
+  background-color: var(--background-color);
+  z-index: 9;
+  padding-left: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.wrapper .full_comment::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: var(--hover-color);
+  top: 0;
+  left: 0;
+}
+.wrapper .body {
+  width: 25%;
+  min-width: 350px;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.wrapper .body video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 4px;
+  padding-bottom: 12px;
+  position: relative;
+}
+.header .infor {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+}
+.header .infor .avatar {
+  width: 42px;
+  height: 42px;
+}
+.header .infor .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header .infor .title .name {
+  font-family: IgBold;
+}
+.header .infor .title .status {
+  line-height: 20px;
+  font-size: 14px;
+  width: auto;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.header .header_action {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.header .header_action:hover {
+  background-color: var(--hover-color);
+}
+.header:before {
+  content: "";
+  width: calc(100% + 16px);
+  height: 1px;
+  background-color: var(--hover-color);
+  position: absolute;
+  left: -16px;
+  bottom: 0;
+}
+
+.comments_box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-y: scroll;
+  gap: 10px;
+}
+.comments_box::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+.comments_box::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--text-color);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  padding: 12px 0;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 16px);
+  height: 1px;
+  background-color: var(--hover-color);
+  top: 0;
+  left: -16px;
+}
+.footer::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 16px);
+  height: 1px;
+  background-color: var(--hover-color);
+  bottom: 0;
+  left: -16px;
+}
+.footer .like_number {
+  font-family: IgBold;
+  font-size: 14px;
+  line-height: 18px;
+}
+.footer .action {
+  display: flex;
+  justify-content: space-between;
+}
+.footer .action .action_main,
+.footer .action .action_save {
+  display: flex;
+  gap: 16px;
+}
+.footer .action .action_main .action_item,
+.footer .action .action_save .action_item {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.day {
+  font-family: IgLight;
+  font-size: 12px;
+}
+
+.content {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  position: relative;
+}
+.content .content_text {
+  text-align: distribute;
+}
+.content .content_text .name-in-content {
+  margin-right: 4px;
+  font-family: IgBold;
+  font-size: 14px;
+}
+
+.more_less-button {
+  cursor: pointer;
+  font-family: IgMedium;
+}
+.more_less-button:hover {
+  text-decoration: underline;
+}
+
+.show_all-comment {
+  cursor: pointer;
+  font-family: IgMedium;
+}
+.show_all-comment:hover {
+  text-decoration: underline;
+}
+
+.box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heartAnimation {
+  animation: heartBeat 0.5s ease-in-out forwards;
+}
+
+@keyframes heartBeat {
+  0% {
+    scale: 0.8;
+  }
+  33% {
+    scale: 1;
+  }
+  66% {
+    scale: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=FullPost.module.css.map */

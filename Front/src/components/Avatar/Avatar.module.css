@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.wrapper img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.wrapper svg {
+  fill: var(--background-color);
+}/*# sourceMappingURL=Avatar.module.css.map */

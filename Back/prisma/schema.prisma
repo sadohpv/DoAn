@@ -1,0 +1,235 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id            Int        @id @default(autoincrement())
+  userId        Int
+  author        User       @relation(fields: [userId], references: [id])
+  img           String
+  content       String?
+  likeNumber    Int
+  shareNumber   Int
+  commentNumber Int
+  published     Boolean    @default(false)
+  typeFile      Boolean    @default(false)
+  updatedAt     DateTime   @updatedAt
+  createdAt     DateTime   @default(now())
+  Comments      Comment[]
+  LikePosts     LikePost[]
+  Saves         SavePost[]
+  Reports       Report[]
+  sharePostId   Int?
+  prevPost      Post?      @relation("byPost", fields: [sharePostId], references: [id])
+  nextPost      Post[]     @relation("byPost")
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  slug          String         @unique
+  email         String         @unique
+  password      String
+  userName      String
+  phoneNumber   String         @unique
+  gender        Boolean
+  address       String
+  avatar        String
+  ban           Ban
+  role          Role
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  Posts         Post[]
+  Comments      Comment[]
+  ComInComs     ComInCom[]
+  LikeComInComs LikeComInCom[]
+  LikeComment   LikeComment[]
+  LikePosts     LikePost[]
+  NotifyFrom    Notify[]       @relation("userFrom")
+  NotifyTo      Notify[]       @relation("userTo")
+  FriendFrom    Friend[]       @relation("friendFrom")
+  FriendTo      Friend[]       @relation("friendTo")
+  Saves         SavePost[]
+  Reports       Report[]
+  ChatFrom      Chat[]         @relation("chatFrom")
+  ChatTo        Chat[]         @relation("chatTo")
+  FollowFrom    Follow[]       @relation("followFrom")
+  FollowTo      Follow[]       @relation("followTo")
+}
+
+model Comment {
+  id          Int           @id @default(autoincrement())
+  author      User          @relation(fields: [userId], references: [id])
+  userId      Int
+  postWhere   Post          @relation(fields: [postId], references: [id])
+  postId      Int
+  likeNumber  Int
+  content     String
+  ComInComs   ComInCom[]
+  likeComment LikeComment[]
+  Reports     Report[]
+  updatedAt   DateTime      @updatedAt
+  createdAt   DateTime      @default(now())
+}
+
+model ComInCom {
+  id         Int            @id @default(autoincrement())
+  author     User           @relation(fields: [userId], references: [id])
+  Comment    Comment?       @relation(fields: [commentId], references: [id])
+  likeNumber Int
+  content    String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  userId     Int
+  commentId  Int?
+  LikeComs   LikeComInCom[]
+}
+
+model LikeComment {
+  id        Int      @id @default(autoincrement())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Comment   Comment? @relation(fields: [commentId], references: [id])
+  commentId Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LikeComInCom {
+  id         Int       @id @default(autoincrement())
+  User       User?     @relation(fields: [userId], references: [id])
+  userId     Int?
+  ComInCom   ComInCom? @relation(fields: [comInComId], references: [id])
+  comInComId Int?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model LikePost {
+  id        Int      @id @default(autoincrement())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Post      Post?    @relation(fields: [postId], references: [id])
+  postId    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Friend {
+  id        Int        @id @default(autoincrement())
+  UserFrom  User?      @relation("friendFrom", fields: [userFrom], references: [id])
+  userFrom  Int?
+  UserTo    User?      @relation("friendTo", fields: [userTo], references: [id])
+  userTo    Int?
+  status    FriendType
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Notify {
+  id        Int          @id @default(autoincrement())
+  UserFrom  User?        @relation(name: "userFrom", fields: [userFrom], references: [id])
+  userFrom  Int?
+  UserTo    User?        @relation(name: "userTo", fields: [userTo], references: [id])
+  userTo    Int?
+  type      NotifyType   @default(NONE)
+  status    NotifyStatus @default(UNREAD)
+  content   String?      @default("")
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model SavePost {
+  id        Int      @id @default(autoincrement())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Post      Post?    @relation(fields: [postId], references: [id])
+  postId    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Report {
+  id        Int      @id @default(autoincrement())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Post      Post?    @relation(fields: [postId], references: [id])
+  postId    Int?
+  Comment   Comment? @relation(fields: [commentId], references: [id])
+  commentId Int?
+  content   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Chat {
+  id        Int      @id @default(autoincrement())
+  UserFrom  User?    @relation(name: "chatFrom", fields: [userFrom], references: [id])
+  userFrom  Int?
+  UserTo    User?    @relation(name: "chatTo", fields: [userTo], references: [id])
+  userTo    Int?
+  content   String
+  status    ChatType
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Follow {
+  id Int @id @default(autoincrement())
+
+  UserFrom   User?    @relation(name: "followFrom", fields: [followFrom], references: [id])
+  followFrom Int?
+  UserTo     User?    @relation(name: "followTo", fields: [followTo], references: [id])
+  followTo   Int?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+enum FriendType {
+  ACCEPTED
+  REQUIRED
+}
+
+enum NotifyType {
+  ADDFRIEND
+  COMMENT
+  NOTIFY
+  LIKECOMMENT
+  LIKEPOST
+  NONE
+}
+
+enum NotifyStatus {
+  READ
+  UNREAD
+}
+
+enum ChatType {
+  SEND
+  RECEIVE
+  SEEN
+}
+
+enum Ban {
+  ACCOUNT
+  LIKE
+  COMMENT
+  NONE
+}
+
+enum Role {
+  USER
+  DEV
+  ADMIN
+}
