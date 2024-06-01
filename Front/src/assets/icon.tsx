@@ -64,10 +64,10 @@ export const CreateIcon = ({ width = "24px", height = "24px", fill = "none", str
         </svg>
     );
 };
-export const AvatarDefault = ({ width = "24px", height = "24px" }) => {
+export const AvatarDefault = ({ width = "24px", height = "24px", fill = "#000000" }) => {
     return (
         <svg
-            fill="#000000"
+            fill={fill}
             width={`calc(${width} / 2)`}
             height={`calc(${height} / 2)`}
             xmlns="http://www.w3.org/2000/svg"
@@ -344,21 +344,21 @@ export const ImageIcon = ({ width = "24px", height = "24px" }) => {
             <path fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="m64 288 96-96 96 96 64-64 128 128"></path></svg>
     );
 };
-export const EmptyIcon = ({ width = "24px", height = "24px" }) => {
+export const EmptyIcon = ({ width = "24px", height = "24px", fill = "var(--text-color)" }) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} enableBackground="new 0 0 512 512" viewBox="0 0 512 512" id="empty-folder">
-            <polygon fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" points="380.946 241.847 101.605 241.847 31.77 381.517 450.781 381.517"></polygon>
-            <rect width="419.011" height="113.483" x="31.77" y="381.517" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></rect>
-            <path fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="M348.607 438.258c0 10.981-8.896 19.877-19.877 19.877-6.501 0-12.271-3.118-15.901-7.951-2.49-3.321-3.976-7.455-3.976-11.926 0-4.47 1.485-8.604 3.976-11.927 3.631-4.832 9.4-7.95 15.901-7.95C339.712 418.381 348.607 427.277 348.607 438.258zM173.691 438.258c0 4.471-1.483 8.604-3.975 11.926-3.622 4.833-9.399 7.951-15.901 7.951-10.973 0-19.877-8.896-19.877-19.877 0-10.98 8.904-19.877 19.877-19.877 6.502 0 12.279 3.118 15.901 7.95C172.208 429.654 173.691 433.788 173.691 438.258z"></path>
-            <path fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="
+            <polygon fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" points="380.946 241.847 101.605 241.847 31.77 381.517 450.781 381.517"></polygon>
+            <rect width="419.011" height="113.483" x="31.77" y="381.517" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></rect>
+            <path fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="M348.607 438.258c0 10.981-8.896 19.877-19.877 19.877-6.501 0-12.271-3.118-15.901-7.951-2.49-3.321-3.976-7.455-3.976-11.926 0-4.47 1.485-8.604 3.976-11.927 3.631-4.832 9.4-7.95 15.901-7.95C339.712 418.381 348.607 427.277 348.607 438.258zM173.691 438.258c0 4.471-1.483 8.604-3.975 11.926-3.622 4.833-9.399 7.951-15.901 7.951-10.973 0-19.877-8.896-19.877-19.877 0-10.98 8.904-19.877 19.877-19.877 6.502 0 12.279 3.118 15.901 7.95C172.208 429.654 173.691 433.788 173.691 438.258z"></path>
+            <path fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="
 			M308.854,438.258c0,4.471,1.485,8.604,3.976,11.926H169.716c2.491-3.321,3.975-7.455,3.975-11.926
 			c0-4.47-1.483-8.604-3.975-11.927h143.113C310.339,429.654,308.854,433.788,308.854,438.258z"></path>
-            <polyline fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" points="257.13 241.847 101.605 241.847 101.605 328.034 379.925 328.034 379.925 241.847 356.956 241.847"></polyline>
-            <polygon fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" points="379.086 328.034 240.345 328.034 101.605 328.034 83.98 381.517 240.345 381.517 396.71 381.517"></polygon>
-            <g><line x1="83.843" x2="72.652" y1="213.182" y2="188.61" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
-                <line x1="100.224" x2="106.915" y1="205.721" y2="187.84" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
-                <line x1="67.462" x2="49.581" y1="220.643" y2="213.952" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line></g><g>
-                <path fill="var(--text-color)" d="M163.168,306.808c-0.08,0-0.161-0.002-0.242-0.006c-3.699-0.176-7.304-0.64-10.715-1.377
+            <polyline fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" points="257.13 241.847 101.605 241.847 101.605 328.034 379.925 328.034 379.925 241.847 356.956 241.847"></polyline>
+            <polygon fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" points="379.086 328.034 240.345 328.034 101.605 328.034 83.98 381.517 240.345 381.517 396.71 381.517"></polygon>
+            <g><line x1="83.843" x2="72.652" y1="213.182" y2="188.61" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
+                <line x1="100.224" x2="106.915" y1="205.721" y2="187.84" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
+                <line x1="67.462" x2="49.581" y1="220.643" y2="213.952" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line></g><g>
+                <path fill={fill} d="M163.168,306.808c-0.08,0-0.161-0.002-0.242-0.006c-3.699-0.176-7.304-0.64-10.715-1.377
 		c-2.699-0.583-4.415-3.244-3.831-5.943s3.244-4.414,5.943-3.83c2.875,0.621,5.929,1.012,9.078,1.162
 		c2.758,0.131,4.888,2.474,4.756,5.232C168.031,304.723,165.82,306.808,163.168,306.808z M183.042,305.185
 		c-2.343,0-4.435-1.655-4.901-4.041c-0.531-2.71,1.236-5.337,3.946-5.867c3.007-0.588,6.135-1.347,9.295-2.254
@@ -410,14 +410,14 @@ export const EmptyIcon = ({ width = "24px", height = "24px" }) => {
 		c0.51,2.714-1.277,5.327-3.992,5.836c-2.336,0.438-4.627,1.575-6.45,3.201C333.549,168.69,332.36,169.108,331.177,169.108z
 		 M395.51,155.306c-2.184,0-3.43-1.001-4.183-2.328c-0.69-0.813-1.127-1.854-1.18-3.002c-0.026-0.551-0.055-1.107-0.088-1.669
 		c-0.003-0.045-0.006-0.09-0.008-0.135c-0.044-0.781-0.06-1.295-0.06-1.606c0-3.453,2.592-5.315,5.03-5.315
-		c4.496,0,5.049,4.42,5.257,6.083c0.093,0.742,0.248,2.097,0.248,2.843C400.527,153.388,397.977,155.306,395.51,155.306z"></path></g><g><path fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="
+		c4.496,0,5.049,4.42,5.257,6.083c0.093,0.742,0.248,2.097,0.248,2.843C400.527,153.388,397.977,155.306,395.51,155.306z"></path></g><g><path fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="
 		M414.489,49.5l-1.78,12.45l-3.13,21.91l-4.09,28.64c0,0,0,13.5-13.5,13.5s-13.5-13.5-13.5-13.5l-4.09-28.64l-3.13-21.91
 		l-1.78-12.45c0,0,0-22.5,22.5-22.5S414.489,49.5,414.489,49.5z"></path>
-                <path fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="M374.399 83.86c-6.82 5.42-21.55 15.14-39.53 15.14-24.925 0-31.158-24.92-31.158-24.92s6.233-24.93 31.158-24.93c15.59 0 28.74 7.31 36.4 12.8L374.399 83.86zM480.259 74.08c0 0-6.229 24.92-31.149 24.92-17.98 0-32.71-9.72-39.53-15.14l3.13-21.91c7.66-5.49 20.811-12.8 36.4-12.8C474.029 49.15 480.259 74.08 480.259 74.08z"></path>
-                <line x1="400.989" x2="405.489" y1="28.482" y2="18" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
-                <line x1="382.989" x2="378.489" y1="28.482" y2="18" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
-                <line x1="406.499" x2="377.85" y1="105.43" y2="105.43" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
-                <line x1="408.978" x2="375.416" y1="88.07" y2="88.07" fill="none" stroke="var(--text-color)" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line></g></svg>
+                <path fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10" d="M374.399 83.86c-6.82 5.42-21.55 15.14-39.53 15.14-24.925 0-31.158-24.92-31.158-24.92s6.233-24.93 31.158-24.93c15.59 0 28.74 7.31 36.4 12.8L374.399 83.86zM480.259 74.08c0 0-6.229 24.92-31.149 24.92-17.98 0-32.71-9.72-39.53-15.14l3.13-21.91c7.66-5.49 20.811-12.8 36.4-12.8C474.029 49.15 480.259 74.08 480.259 74.08z"></path>
+                <line x1="400.989" x2="405.489" y1="28.482" y2="18" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
+                <line x1="382.989" x2="378.489" y1="28.482" y2="18" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
+                <line x1="406.499" x2="377.85" y1="105.43" y2="105.43" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line>
+                <line x1="408.978" x2="375.416" y1="88.07" y2="88.07" fill="none" stroke={fill} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="10"></line></g></svg>
     );
 };
 
@@ -450,5 +450,20 @@ export const LockIcon = ({ width = "24px", height = "24px" }) => {
 
         <svg xmlns="http://www.w3.org/2000/svg" width={width} fill="var(--text-color)"
             height={height} viewBox="0 0 24 24" id="lock"><g><g><rect width="24" height="24" opacity="0"></rect><path d="M17 8h-1V6.11a4 4 0 1 0-8 0V8H7a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3zm-7-1.89A2.06 2.06 0 0 1 12 4a2.06 2.06 0 0 1 2 2.11V8h-4zM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1z"></path><path d="M12 12a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></g></g></svg>
+    );
+};
+
+export const AdminIcon = ({ width = "24px", height = "24px" }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={width}
+            height={height} fill="none" id="buiness-man"><path fill="var(--text-color)" fillRule="evenodd" d="M7.75 5.5a4.25 4.25 0 1 1 8.5 0 4.25 4.25 0 0 1-8.5 0zM12 2.75a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5zM3.75 19a8.25 8.25 0 0 1 16.5 0v.192a3.058 3.058 0 0 1-3.058 3.058H6.808a3.058 3.058 0 0 1-3.058-3.058V19zm5.864-6.316A6.753 6.753 0 0 0 5.25 19v.192c0 .86.697 1.558 1.558 1.558h10.384c.86 0 1.558-.697 1.558-1.558V19a6.753 6.753 0 0 0-4.364-6.316l.333 2.994a1.25 1.25 0 0 1-.359 1.022l-1.476 1.477a1.25 1.25 0 0 1-1.768 0L9.64 16.7a1.25 1.25 0 0 1-.359-1.022l.333-2.994zm1.552-.383-.38 3.424L12 16.939l1.215-1.214-.38-3.424a6.819 6.819 0 0 0-1.67 0z" clipRule="evenodd"></path></svg>
+    );
+};
+
+
+export const ChooseIcon = ({ width = "24px", height = "24px" ,fill="var(--text-color)"}) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={width}
+            height={height} fill={fill} shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" viewBox="0 0 512 377.43"><path fillRule="nonzero" d="M199.52 0h88.83a718.392 718.392 0 0 0-17.47 17.06l-.29.29h-71.07c-5.28 0-10.08 2.17-13.57 5.65-3.48 3.48-5.64 8.29-5.64 13.56v90.05c0 5.27 2.17 10.07 5.65 13.55 2.89 2.9 6.7 4.89 10.91 5.48v-.32c0-17.52 7.83-28.84 17.86-33.94 4.03-2.06 8.45-3.08 12.89-3.08 4.42 0 8.84 1.04 12.88 3.08 4.57 2.31 8.69 5.89 11.83 10.7-15.34-25.82-25.95-42.63-48.47-60.12l27.68-6.25c8.41 4.85 13.89 8.87 20.41 16.06 16.92-27.22 36.01-43.04 59.88-64.45l2.34-.9h26.12c-35.02 38.89-61.05 69.96-87.22 116.85 3.38 5.68 5.45 12.95 5.45 21.78v.77h53.96c5.09 0 9.75-2.02 13.2-5.29l.35-.37c3.49-3.49 5.66-8.29 5.66-13.55v-82.4c5.23-6.17 10.5-12.27 15.76-18.29a36.06 36.06 0 0 1 1.6 10.64v90.05c0 10.05-4.13 19.19-10.75 25.82l-.53.49c-6.59 6.33-15.51 10.25-25.29 10.25h-53.96v3.71c.56-.15 1.14-.23 1.74-.23h9.14c.53 0 1.04.06 1.53.18 10.97 1.76 16.44 9.08 19.03 18.58a6.65 6.65 0 0 1 3.56-1.03h9.14c.53 0 1.04.06 1.53.18 11.68 1.87 17.12 10.04 19.49 20.43.57-.15 1.16-.24 1.77-.24h9.14c.53 0 1.04.07 1.53.18 25.1 4.02 24.73 36.35 24.49 57.44 0 9.76.42 19.46.51 29.21-1.12 22.76-11.43 40.52-22.04 58.83l-.91 1.57c-4.69 8.2-10.12 14.46-16.31 18.74-6.3 4.35-13.27 6.59-20.92 6.67l-.62.03h-78.4c-7.88.14-14.01-3.31-18.52-10.06-3.62-5.43-6.03-13.04-7.33-22.63l-49.7-75.21c-2.93-3.96-6.81-9.95-9.69-16.48-2.23-5.07-3.93-10.58-4.28-15.99-.42-6.4.47-11.55 2.29-15.58 2.26-5 5.86-8.26 10.21-10.03 4.06-1.65 8.66-1.9 13.28-.98 5.54 1.1 11.26 3.91 16.14 7.94l17.14 14.07 5.41 4.44v-73.83c-9-.65-17.14-4.61-23.18-10.65-6.62-6.62-10.74-15.76-10.74-25.82V36.56c0-10.06 4.12-19.21 10.74-25.83C180.31 4.11 189.45 0 199.52 0zm109.83 286.65c0-2.99 2.43-5.42 5.42-5.42 2.99 0 5.41 2.43 5.41 5.42v24.77c0 2.99-2.42 5.41-5.41 5.41s-5.42-2.42-5.42-5.41v-24.77zm-32.02-10.95c0-2.99 2.43-5.42 5.42-5.42 2.99 0 5.42 2.43 5.42 5.42v35.71c0 2.99-2.43 5.42-5.42 5.42-2.99 0-5.42-2.43-5.42-5.42V275.7zm47.92-57.68c.28 7.05-.14 14.34-.51 20.95-.22 3.91-.43 7.53-.43 10.89 0 3.67-2.96 6.64-6.63 6.64-3.66 0-6.63-2.97-6.63-6.64 0-3.12.23-7.21.48-11.62.93-16.44 2.17-38.42-9.31-40.6h-8.7c-.58 0-1.15-.07-1.68-.21.54 7.92.07 16.3-.36 23.81-.22 3.91-.42 7.54-.42 10.9 0 3.66-2.97 6.63-6.64 6.63-3.66 0-6.63-2.97-6.63-6.63 0-3.12.24-7.21.48-11.62.93-16.44 2.17-38.43-9.31-40.6h-8.7c-.6 0-1.18-.08-1.74-.23v34.23c0 3.66-2.97 6.63-6.63 6.63-3.66 0-6.63-2.97-6.63-6.63v-68.87c0-11.54-4.71-18.82-10.72-21.86-2.2-1.11-4.58-1.68-6.92-1.68-2.33 0-4.69.55-6.89 1.67-5.96 3.01-10.59 10.32-10.59 22.14v120.69a6.634 6.634 0 1 1-13.27 0v-12.26a6.39 6.39 0 0 1-1.02-.67c-3.39-2.71-8.1-6.54-12.76-10.35l-17.22-14.12c-3.2-2.65-6.83-4.47-10.23-5.15-2.18-.43-4.19-.38-5.76.25-1.28.52-2.38 1.56-3.12 3.2-.97 2.14-1.42 5.2-1.15 9.31.23 3.64 1.51 7.65 3.2 11.48 2.53 5.73 5.89 10.9 8.36 14.2l50.8 76.83c.59.89.94 1.88 1.05 2.87 1.01 8.3 2.77 14.51 5.37 18.4 1.88 2.82 4.33 4.27 7.38 4.19 25.1-.4 54.27-1.09 79.12 0 4.9-.08 9.39-1.54 13.46-4.35 4.49-3.11 8.6-7.93 12.32-14.44l.95-1.63c9.79-16.87 19.29-33.24 20.29-52.69l-.51-22.53a6.5 6.5 0 0 1-.07-.99l.07-5.32c.19-16.5.47-41.75-13.25-44.22h-8.9zM36.56 0h62.78c10.05 0 19.2 4.12 25.82 10.74l.49.53c6.33 6.58 10.25 15.52 10.25 25.29v90.05c0 10.05-4.12 19.19-10.75 25.82-6.62 6.62-15.77 10.74-25.81 10.74H36.56c-10.02 0-19.16-4.11-25.79-10.74h-.03C4.12 145.81 0 136.67 0 126.61V36.56C0 26.5 4.11 17.35 10.73 10.73l.53-.48C17.84 3.91 26.77 0 36.56 0zm62.78 17.35H36.56c-5.1 0-9.76 2.01-13.21 5.28L23 23c-3.48 3.48-5.65 8.29-5.65 13.56v90.05c0 5.27 2.17 10.07 5.66 13.55 3.47 3.5 8.28 5.66 13.55 5.66h62.78c5.25 0 10.06-2.17 13.54-5.66 3.49-3.49 5.67-8.29 5.67-13.55V36.56c0-5.09-2.02-9.75-5.29-13.21l-.37-.35c-3.48-3.48-8.28-5.65-13.55-5.65zM412.66 0h62.78c10.05 0 19.2 4.12 25.82 10.74l.49.53C508.08 17.85 512 26.79 512 36.56v90.05c0 10.04-4.12 19.19-10.75 25.82-6.62 6.62-15.77 10.74-25.81 10.74h-62.78c-10.02 0-19.16-4.11-25.79-10.74h-.03c-6.62-6.62-10.74-15.76-10.74-25.82V36.56c0-10.06 4.11-19.21 10.73-25.83l.53-.48C393.94 3.91 402.87 0 412.66 0zm62.78 17.35h-62.78c-5.1 0-9.76 2.01-13.21 5.28l-.35.37c-3.48 3.48-5.65 8.29-5.65 13.56v90.05c0 5.27 2.17 10.07 5.66 13.55 3.47 3.5 8.28 5.66 13.55 5.66h62.78c5.25 0 10.06-2.17 13.55-5.66 3.48-3.49 5.66-8.29 5.66-13.55V36.56c0-5.09-2.02-9.75-5.29-13.21l-.37-.35c-3.48-3.48-8.28-5.65-13.55-5.65z" /></svg>
     );
 };

@@ -8,7 +8,9 @@
 .mention__control::before {
   display: none;
 }
-
+.mention__highlighter{
+  max-height: 168px;
+}
 .mention__suggestions {
   width              : 260px;
   /* height          : 200px; */

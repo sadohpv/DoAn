@@ -312,7 +312,7 @@ const CreateComp: FC<CreateCompProps> = ({ setModal, modal, page, setPage, tippy
                                     </div>
                                     <div className={cx("content_post")}>
                                         <div className={cx("content_header")}>
-                                            <Avatar size={28} />
+                                            <Avatar size={28} src={userData.avatar}/>
                                             <div className={cx("name")}>
                                                 <p>
                                                     {userData.userName}
@@ -389,7 +389,7 @@ const CreateComp: FC<CreateCompProps> = ({ setModal, modal, page, setPage, tippy
                                     </div>
                                     <div className={cx("content_post")}>
                                         <div className={cx("content_header")}>
-                                            <Avatar size={28} />
+                                            <Avatar size={28} src={userData.avatar}/>
                                             <div className={cx("name")}>
                                                 <p>
                                                     {userData.userName}

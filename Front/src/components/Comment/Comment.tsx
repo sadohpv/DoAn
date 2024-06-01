@@ -15,6 +15,8 @@ import { useSelector } from "react-redux";
 import commentServices from "~/services/commentServices";
 import Tippy from "@tippyjs/react";
 import MentionCustom from "../Mentions/Mention";
+import { toast } from "react-toastify";
+import reportServices from "~/services/reportServices";
 
 const cx = classNames.bind(styles);
 
@@ -42,6 +44,7 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
   const [deleteList, setDeletetList] = useState<any[]>([]);
   const [replyLength, setReplyLength] = useState(data.ComInComs.length ? data.ComInComs.length : 0)
   const [replyModal, setReplyModal] = useState(false);
+  const [reportContent, setReportContent] = useState<number[]>([]);
 
   const language = useSelector<any>(state => state.app.language);
   const idUser = useSelector<any>(state => state.auth.data.id);
@@ -79,7 +82,7 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
     setConfirmType(true);
   }
   const handleConfirmDelete = async () => {
-    await commentServices.deleteComment(data.id);
+    const result = await commentServices.deleteComment(data.id);
     setConfirm(!confirm);
     if (typeof deleteCommentCount === "function") {
       deleteCommentCount();
@@ -94,7 +97,6 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
         id: data.id,
         content: comment,
       }
-      // console.log(comment);
       await commentServices.editComment(payload);
       setConfirm(!confirm);
       setContent(comment);
@@ -111,10 +113,7 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
   }
   const handleComTag = (comment: any) => {
     const breakLine = comment.split("\n");
-
     if (breakLine.length > 1) {
-      // console.log(breakLine);
-
       return (
         <div className={cx("tag")}>
           {breakLine.map((line: any, index: any) => {
@@ -130,9 +129,6 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
       );
     } else {
       const result = comment.split("@t@g");
-      // console.log(result);
-
-
       return (
         <div key={index} className={cx("tag")}>
           {result.map((item: any, index: any) =>
@@ -143,8 +139,6 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
     }
   };
   const handleNextTag = (result: any, item: any, index: any) => {
-    // console.log(result[index]);
-
     if (item.includes("@")) {
       return (
         <a key={Math.random()} className={cx("tag_link")} href={`/${item.slice(1)}`}>
@@ -173,6 +167,40 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
     setDeletetList([...deleteList, +idDelete])
     setReplyLength(replyLength - 1);
     await commentServices.deleteComInCom(idDelete);
+  }
+
+  const handleReasonReport = (value: number) => {
+    if (reportContent.includes(value)) {
+      const reportTemp = reportContent.filter(number => number !== value);
+      setReportContent(reportTemp);
+    } else {
+      setReportContent([...reportContent, value].sort((a, b) => a - b))
+    }
+  }
+  const handleCreateReport = async () => {
+    if (reportContent.length > 0) {
+      const payload = {
+        commentId: data.id,
+        content: reportContent
+      }
+      const result = await reportServices.handleCreateReport(payload);
+      if (result.result) {
+        handleCancelComment();
+        toast.success(<FormattedMessage id="Report.Report_create_success" />, {
+          autoClose: 3000
+        })
+      } else {
+        handleCancelComment();
+        toast.error(<FormattedMessage id="Report.Report_create_failed" />, {
+          autoClose: 3000
+        })
+      }
+    } else {
+      toast.warning(<FormattedMessage id="Report.Has_choose" />, {
+        autoClose: 3000
+      })
+    }
+
   }
   return (
     <>
@@ -293,13 +321,10 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
                             </div>
                           }
                         </div>
-
                       </div>
                     </div>
                   ))
                 }
-
-
               </div>
             </div>
             <div className={cx("like")}>
@@ -323,9 +348,7 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
                     <div className={cx("modal_main")}>
 
                       <div className={cx("modal_main-button")} onClick={handleReplyComment}>
-
                         <FormattedMessage id="Common.Reply" />
-
                       </div>
 
                       {
@@ -346,9 +369,6 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
                           </div>
                         </>
                       }
-
-
-
                     </div>
                   </div>
                 }
@@ -361,7 +381,47 @@ const CommentCard: FC<CommentCard> = ({ reload, handleCreateReply, taglist, inde
               <div className={cx("confirm_main")}>
                 <div className={cx("message")}>
                   {
-                    confirmType === true && <FormattedMessage id="Comment.Report_comment_message" />
+                    confirmType === true &&
+                    <div className={cx("delete_modal")}>
+                      <div className={cx("report_wrapper")}>
+                        <div className={cx("reason")}>
+                          <input type="checkbox" onChange={() => handleReasonReport(1)} />
+                          <FormattedMessage id="Report.Reason_comment_1" />
+                        </div>
+                        <div className={cx("reason")}>
+                          <input type="checkbox" onChange={() => handleReasonReport(2)} />
+                          <FormattedMessage id="Report.Reason_comment_2" />
+
+                        </div>
+                        <div className={cx("reason")}>
+                          <input type="checkbox" onChange={() => handleReasonReport(3)} />
+                          <FormattedMessage id="Report.Reason_comment_3" />
+
+                        </div>
+                        <div className={cx("reason")}>
+                          <input type="checkbox" onChange={() => handleReasonReport(4)} />
+                          <FormattedMessage id="Report.Reason_comment_4" />
+
+                        </div>
+                        <div className={cx("reason")}>
+                          <input type="checkbox" onChange={() => handleReasonReport(5)} />
+                          <FormattedMessage id="Report.Reason_comment_5" />
+
+                        </div>
+                        <div className={cx("report_action")}>
+                          <div className={cx("report_button")} onClick={handleCreateReport}>
+                            <FormattedMessage id="Common.Report" />
+                          </div>
+                          <div className={cx("report_button", "cancel")} onClick={handleCancelComment}>
+                            <FormattedMessage id="Common.Cancel" />
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+
+
                   }
                   {
                     confirmType === false && <FormattedMessage id="Comment.Delete_comment_message" />

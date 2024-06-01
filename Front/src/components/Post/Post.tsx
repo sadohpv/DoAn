@@ -29,6 +29,7 @@ import { RootState } from "~/redux/store";
 import UserCardHover from "../UserCard/UserCardHover";
 import { toast } from "react-toastify";
 import savePostService from "~/services/savePostService";
+import reportServices from "~/services/reportServices";
 const cx = classNames.bind(styles);
 interface PostCompProps {
     data: any;
@@ -52,6 +53,8 @@ const PostComp: FC<PostCompProps> = ({ data, likeList, saveList }) => {
     const [deleteModal, setDeleteModal] = useState(false);
     const [published, setPublished] = useState(data.published);
     const [afterDelete, setAfterDelete] = useState(true);
+    const [reportModal, setReportModal] = useState(false);
+    const [reportContent, setReportContent] = useState<number[]>([]);
     const language = useSelector<any>(state => state.app.language);
     console.log(listLike);
 
@@ -156,7 +159,7 @@ const PostComp: FC<PostCompProps> = ({ data, likeList, saveList }) => {
     }
     const handleDeletePost = async () => {
         const result = await postServices.handleDeletePost(data.id);
-        if (result) {
+        if (result.dataPost) {
             toast.success(<FormattedMessage id="Post.Delete_success" />, {
                 autoClose: 3000
             })
@@ -169,6 +172,44 @@ const PostComp: FC<PostCompProps> = ({ data, likeList, saveList }) => {
             setDeleteModal(!deleteModal);
 
         }
+    }
+    const handleOpenReport = () => {
+        setReportModal(!reportModal);
+        setReportContent([]);
+    }
+    const handleReasonReport = (value: number) => {
+        if (reportContent.includes(value)) {
+            const reportTemp = reportContent.filter(number => number !== value);
+            setReportContent(reportTemp);
+        } else {
+            setReportContent([...reportContent, value].sort((a, b) => a - b))
+        }
+    }
+    const handleCreateReport = async () => {
+        if (reportContent.length > 0) {
+
+            const payload = {
+                postId: data.id,
+                content: reportContent
+            }
+            const result = await reportServices.handleCreateReport(payload);
+            if (result.result) {
+                handleOpenReport();
+                toast.success(<FormattedMessage id="Report.Report_create_success" />, {
+                    autoClose: 3000
+                })
+            } else {
+                handleOpenReport();
+                toast.error(<FormattedMessage id="Report.Report_create_failed" />, {
+                    autoClose: 3000
+                })
+            }
+        }else{
+            toast.warning(<FormattedMessage id="Report.Has_choose" />, {
+                autoClose: 3000
+            })
+        }
+
     }
     return (
         <>
@@ -224,7 +265,7 @@ const PostComp: FC<PostCompProps> = ({ data, likeList, saveList }) => {
                                             <FormattedMessage id="Post.Copy_link_post" />
 
                                         </div>
-                                        <div className={cx("action_item")}>
+                                        <div className={cx("action_item")} onClick={handleOpenReport}>
                                             <FormattedMessage id="Common.Report" />
                                         </div>
                                         {
@@ -348,7 +389,7 @@ const PostComp: FC<PostCompProps> = ({ data, likeList, saveList }) => {
                     </div>
                     {modal && (
                         <div className={cx("full_post_box")}>
-                            <FullPostComp published={published} setPublished={setPublished} like={like} setCommentFatherNumber={setCommentNumber} commentFatherNumber={commentNumber} handleLike={handleLike} likeFatherNumber={likeNumber} data={data} likeList={listLike} />
+                            <FullPostComp deleteIsModal={setAfterDelete} published={published} setPublished={setPublished} like={like} setCommentFatherNumber={setCommentNumber} commentFatherNumber={commentNumber} handleLike={handleLike} likeFatherNumber={likeNumber} data={data} likeList={listLike} />
                             <div className={cx("close")} onClick={handleCloseModal}>
                                 <CloseIcon width="42px" height="42px" />
                             </div>
@@ -410,6 +451,47 @@ const PostComp: FC<PostCompProps> = ({ data, likeList, saveList }) => {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        )
+                    }
+                    {
+                        reportModal && (
+                            <div className={cx("delete_modal")}>
+                                <div className={cx("report_wrapper")}>
+                                    <div className={cx("reason")}>
+                                        <input type="checkbox" onChange={() => handleReasonReport(1)} />
+                                        <FormattedMessage id="Report.Reason_post_1" />
+                                    </div>
+                                    <div className={cx("reason")}>
+                                        <input type="checkbox" onChange={() => handleReasonReport(2)} />
+                                        <FormattedMessage id="Report.Reason_post_2" />
+
+                                    </div>
+                                    <div className={cx("reason")}>
+                                        <input type="checkbox" onChange={() => handleReasonReport(3)} />
+                                        <FormattedMessage id="Report.Reason_post_3" />
+
+                                    </div>
+                                    <div className={cx("reason")}>
+                                        <input type="checkbox" onChange={() => handleReasonReport(4)} />
+                                        <FormattedMessage id="Report.Reason_post_4" />
+
+                                    </div>
+                                    <div className={cx("reason")}>
+                                        <input type="checkbox" onChange={() => handleReasonReport(5)} />
+                                        <FormattedMessage id="Report.Reason_post_5" />
+
+                                    </div>
+                                    <div className={cx("report_action")}>
+                                        <div className={cx("report_button")} onClick={handleCreateReport}>
+                                            <FormattedMessage id="Common.Report" />
+                                        </div>
+                                        <div className={cx("report_button", "cancel")} onClick={handleOpenReport}>
+                                            <FormattedMessage id="Common.Cancel" />
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         )
                     }

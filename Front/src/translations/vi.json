@@ -23,7 +23,10 @@
         "Theme": "Giao Diện",
         "Light": "Sáng",
         "Dark": "Tối",
-        "logout": "Đăng xuất"
+        "logout": "Đăng xuất",
+        "User_manage": "Quản lý người dùng",
+        "Post_manage": "Quản lý bài viết",
+        "Comment_manage": "Quản lý bình luận"
     },
     "Submain": {
         "suggested": "Gợi ý cho bạn",
@@ -51,10 +54,15 @@
         "ShowLess": "Ẩn",
         "Delete": "Xoá",
         "Report": "Báo cáo",
+        "Detail": "Chi tiết",
+        "Report_post": "Tố cáo bài viết",
+        "Report_comment": "Tố cáo bình luận",
         "Cancel": "Huỷ",
         "Reply": "Trả lời",
         "Edit": "Chỉnh sửa",
         "Followed": "Đã theo dõi",
+
+        "Following": "Đang theo dõi",
         "Content": "Nội dung",
         "Male": "Nam",
         "Female": "Nữ",
@@ -62,7 +70,9 @@
         "Slug": "Liên kết",
         "Copy": "Sao chép",
         "Unsave": "Xoá lưu",
-        "Save_post" : "Bài viết đã lưu"
+        "Save_post": "Bài viết đã lưu",
+        "Management": "Quản lý",
+        "Confirm": "Xác nhận"
     },
     "Post": {
         "Share": "Chia sẻ",
@@ -111,7 +121,10 @@
     "Notify": {
         "friend_request_1": "Bạn nhận được một lời mời kết bạn từ ",
         "friend_request_2": ", đừng để họ chờ nhé !!",
-        "comment_tag_1": " đã nhắc đến bạn trong một bình luận."
+        "comment_tag_1": " đã nhắc đến bạn trong một bình luận.",
+        "commen_ban": "Bạn đã bị khoá chức năng bình luận do chúng tôi nhận thấy bạn có hành vi vi phạm tiêu chuẩn cộng đồng. Tất cả bình luận của bạn sẽ bị ẩn.",
+        "remove_unban": "Thông báo này sẽ được xoá khi lệnh cấm được gỡ bỏ.",
+        "post_ban": "Bạn đã bị khoá chức năng viết bài do chúng tôi nhận thấy bạn có hành vi vi phạm tiêu chuẩn cộng đồng. Tất cả bài viết của bạn sẽ bị ẩn."
     },
     "Settings": {
         "General": "Thông tin cơ bản",
@@ -123,9 +136,41 @@
         "New_pass": "Mật khẩu mới",
         "Re_new_pass": "Nhập lại mật khẩu mới",
         "Re_new_pass_note": "Mật khẩu xác nhận không giống mật khẩu bạn muốn đổi",
-        "Re_empty_pass_note" : "Bạn nhập thiếu gì đó ! Hãy kiểm tra lại",
-        "Same_pass" : "Mật khẩu mới không được giống mật khẩu hiện tại",
+        "Re_empty_pass_note": "Bạn nhập thiếu gì đó ! Hãy kiểm tra lại",
+        "Same_pass": "Mật khẩu mới không được giống mật khẩu hiện tại",
         "Not_current_pass": "Mật khẩu hiện tại không đúng ! Hãy kiểm tra lại",
-        "Check_change_avatar" : "Kiểm tra lại ảnh đại diện của bạn một lần nữa trước khi lưu"
+        "Check_change_avatar": "Kiểm tra lại ảnh đại diện của bạn một lần nữa trước khi lưu"
+    },
+    "Report": {
+        "Reason_post_1": "Nội dung phản cảm, thù địch, kích động chống phá.",
+        "Reason_post_2": "Thông tin chưa kiểm chứng, sai sự thật.",
+        "Reason_post_3": "Phân biệt chủng tộc, miệt thị sắc tộc.",
+        "Reason_post_4": "Bài viết này lặp lại quá nhiều lần.",
+        "Reason_post_5": "Bài viết này chứa nội dung vi phạm luật pháp.",
+        "Has_choose": "Chọn ít nhất một lí do tố cáo !",
+        "Reason_user_1": "Tài khoản giả mạo, mạo danh người khác.",
+        "Reason_user_2": "Đăng nội dung vi phạm tiêu chuẩn cộng đồng.",
+        "Reason_user_3": "Đang chịu án phạt, kiểm soát do vi phạm luật.",
+        "Reason_user_4": "Vi phạm về bản quyền, quyền sở hữu trí tuệ.",
+        "Reason_user_5": "Vi phạm các tiêu chuẩn khác.",
+        "Ban_comment": "Cấm bình luận",
+        "Ban_post": "Cấm bài viết",
+        "Ban_user": "Cấm người dùng",
+        "Unban_comment": "Bỏ cấm bình",
+        "Unban_post": "Bỏ cấm bài viết",
+        "Unban_user": "Bỏ cấm người dùng",
+        "User_clean": "Không có tố cáo nào !",
+        "Choose_some_one": "Chọn một người để xem chi tiết !",
+        "Enter_your_pass_to_next": "Nhập mật khẩu của bạn để tiếp tục !",
+        "Wrong_pass": "Sai mật khẩu !",
+        "Empty_pass": "Nhập mật khẩu để tiếp tục !",
+        "Ban_com_message": "Chức năng bình luận của bạn hiện tại đang bị khoá do quản trị viên thấy bạn có hành vi vi phạm tiêu chuẩn cộng đồng. Tất cả các bình luận của bạn sẽ bị ẩn để kiểm tra.",
+        "Complain_message": "Tài khoản của bạn đã bị cấm do quản trị viên thấy bạn có hành vi vi phạm tiêu chuẩn cộng đồng. Thông báo với quản trị viên để gỡ bỏ lệnh cấm nếu bạn thấy điều đó sai !",
+        "Complain": "Kháng nghị",
+        "Reason_comment_1": "Nội dung phản cảm, thù địch, kích động chống phá.",
+        "Reason_comment_2": "Thông tin chưa kiểm chứng, sai sự thật.",
+        "Reason_comment_3": "Phân biệt chủng tộc, miệt thị sắc tộc.",
+        "Reason_comment_4": "Bình luận này lặp lại quá nhiều lần.",
+        "Reason_comment_5": "Bình luận này chứa nội dung vi phạm luật pháp."
     }
 }

@@ -1,9 +1,10 @@
 "use client"
 import classNames from "classnames/bind";
-import styles from "$app/admin/AdminPage.module.scss";
+import styles from "$app/admin/AdminPageLayout.module.scss";
 import { Children, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { IRootState } from "~/redux/reducers/rootReducer";
+import AdminNav from "~/components/Admin/AdminNav";
 const cx = classNames.bind(styles);
 
 export default function AdminPage({
@@ -12,7 +13,7 @@ export default function AdminPage({
     children: React.ReactNode;
 }>) {
 
-    const [admin, setAdmin] = useState(false);
+    const [admin, setAdmin] = useState(true);
     const role = useSelector<IRootState, any>(state => state.auth.data.role);
 
 
@@ -27,7 +28,12 @@ export default function AdminPage({
             {
                 admin ?
                     <div className={cx("wrapper")}>
-                        {children}
+                        <div className={cx("task_bar")}>
+                            <AdminNav />
+                        </div>
+                        <div className={cx("main")}>
+                            {children}
+                        </div>
                     </div>
                     :
                     <>

@@ -1,0 +1,26 @@
+.wrapper {
+    // min-width: 100vw;
+    min-height: 100vh;
+    color: var(--text-color);
+    display: flex;
+    padding-left: 72px;
+    overflow-x: hidden;
+    width: calc(100vw - 6px);
+}
+.task_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 100%;
+    min-height: 100vh;
+    background-color: var(--navbar-color);
+    box-shadow: 0 0 6px 2px var(--nav-shadow);
+}
+.main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    background-color: var(--background-color);
+}
+

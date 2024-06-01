@@ -16,10 +16,12 @@ import UserPagePostComp from "~/components/Post/UserPagePost";
 import followServices from "~/services/followServices";
 import TippyCustom from "~/utility/Tippy/TooltipCustom";
 import friendServices from "~/services/friendServices";
+import reportServices from "~/services/reportServices";
+import { ToastContainer, toast } from "react-toastify";
+import { IRootState } from "~/redux/reducers/rootReducer";
 const cx = classNames.bind(styles);
 export default function UserPage({ params }: { params: { user: string } }) {
-
-
+  const router = useRouter();
   const [dataUserPage, setDataUserPage] = useState<any>({});
   const [listPost, setListPost] = useState<any>([])
   const [follow, setFollow] = useState<any>(null);
@@ -31,9 +33,16 @@ export default function UserPage({ params }: { params: { user: string } }) {
   const [modal, setModal] = useState<boolean>(false);
   const [modalType, setModalType] = useState<boolean>(false);
   const [acceptType, setAcceptType] = useState<boolean>(false);
+  const [reportModal, setReportModal] = useState<boolean>(false);
+  const [reportContent, setReportContent] = useState<number[]>([]);
 
-  const idUser = useSelector<RootState, any>(state => state.auth.data.id);
-
+  const idUser = useSelector<IRootState, any>(state => state.auth.data.id);
+  const ban = useSelector<IRootState, any>(state => state.auth.data.ban);
+  if (ban) {
+    if (ban.includes("ACCOUNT")) {
+      return router.replace(`/settings`);
+    }
+  }
 
   const handleFollow = async () => {
     if (follow) {
@@ -166,6 +175,50 @@ export default function UserPage({ params }: { params: { user: string } }) {
       setIsFriend("ACCEPTED");
     }
   }
+
+  const handleOpenReportModal = async () => {
+    setReportModal(!reportModal);
+    setReportContent([]);
+
+  }
+  const handleReasonReport = (value: number) => {
+    if (reportContent.includes(value)) {
+      const reportTemp = reportContent.filter(number => number !== value);
+      setReportContent(reportTemp);
+    } else {
+      setReportContent([...reportContent, value].sort((a, b) => a - b))
+    }
+  }
+  const handleCreateReport = async () => {
+    if (reportContent.length > 0) {
+      const payload = {
+        userId: dataUserPage.id,
+        content: reportContent
+      }
+      try {
+        const result = await reportServices.handleCreateReport(payload);
+        if (result) {
+
+          toast.success(<FormattedMessage id="Report.Report_create_success" />, {
+            autoClose: 3000
+          })
+        } else {
+          toast.error(<FormattedMessage id="Report.Report_create_failed" />, {
+            autoClose: 3000
+          })
+        }
+      } catch (error) {
+        toast.error(<FormattedMessage id="Report.Report_create_failed" />, {
+          autoClose: 3000
+        })
+      }
+    } else {
+      toast.warning(<FormattedMessage id="Report.Has_choose" />, {
+        autoClose: 3000
+      })
+    }
+    handleOpenReportModal();
+  }
   console.log(idUser);
   return (
     <>
@@ -228,10 +281,19 @@ export default function UserPage({ params }: { params: { user: string } }) {
                   </TippyCustom>
                 }
 
-
-                <div className={cx("more_button")}>
-                  <ThreeDotsIcon />
-                </div>
+                <TippyCustom
+                  content={<div className={cx("action_more")}>
+                    <div className={cx("action_more-report")} onClick={handleOpenReportModal}>
+                      <FormattedMessage id="Common.Report" />
+                    </div>
+                  </div>
+                  }
+                  haveClick
+                >
+                  <div className={cx("more_button")}>
+                    <ThreeDotsIcon />
+                  </div>
+                </TippyCustom>
               </div>
             </div>
             <div className={cx("infor_2")}>
@@ -384,6 +446,50 @@ export default function UserPage({ params }: { params: { user: string } }) {
           </div>
         </div>
       }
+      {
+        reportModal &&
+        <div className={cx("modal_confirm")}>
+          <div className={cx("report_wrapper")}>
+            <div className={cx("reason")}>
+              <input type="checkbox" onChange={() => handleReasonReport(1)} />
+              <FormattedMessage id="Report.Reason_user_1" />
+            </div>
+            <div className={cx("reason")}>
+              <input type="checkbox" onChange={() => handleReasonReport(2)} />
+              <FormattedMessage id="Report.Reason_user_2" />
+
+            </div>
+            <div className={cx("reason")}>
+              <input type="checkbox" onChange={() => handleReasonReport(3)} />
+              <p>
+                <FormattedMessage id="Report.Reason_user_3" />
+              </p>
+
+            </div>
+            <div className={cx("reason")}>
+              <input type="checkbox" onChange={() => handleReasonReport(4)} />
+              <FormattedMessage id="Report.Reason_user_4" />
+
+            </div>
+            <div className={cx("reason")}>
+              <input type="checkbox" onChange={() => handleReasonReport(5)} />
+              <p>
+                <FormattedMessage id="Report.Reason_user_5" />
+              </p>
+
+            </div>
+            <div className={cx("report_action")}>
+              <div className={cx("report_button")} onClick={handleCreateReport}>
+                <FormattedMessage id="Common.Report" />
+              </div>
+              <div className={cx("report_button", "cancel")} onClick={handleOpenReportModal}>
+                <FormattedMessage id="Common.Cancel" />
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      <ToastContainer />
     </>
   )
 }

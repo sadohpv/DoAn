@@ -1,0 +1,34 @@
+.list_box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    .list_box-header {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        font-size: 16px;
+        font-family: IgMedium;
+        padding: 8px 16px;
+        align-items: center;
+        background-color: aquamarine;
+    }
+    .list_box-main {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        padding: 8px 16px;
+        // background-color: red;
+        gap: 20px;
+    }
+}
+.hide {
+    display: none;
+    user-select: none;
+    position: none;
+    width: 0;
+    height: 0;
+}

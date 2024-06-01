@@ -12,7 +12,6 @@ import { useRouter } from "next/navigation";
 import PostComp from "~/components/Post/Post";
 import postServices from "~/services/postServices";
 import { ToastContainer } from 'react-toastify';
-
 import InfiniteScroll from "react-infinite-scroll-component";
 import IsLoading from "~/components/Skeleton/IsLoading";
 import { IRootState } from "~/redux/reducers/rootReducer";
@@ -20,8 +19,8 @@ import { IRootState } from "~/redux/reducers/rootReducer";
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  // const submain = useMediaQuery("(min-width: 1160px)");
-  // console.log(submain);
+  const router = useRouter();
+
   const [postList, setPostList] = useState<any>([]);
   const [submain, setSubmain] = useState<boolean>(true);
   const { width = 0, height = 0 } = useWindowSize();
@@ -29,6 +28,12 @@ export default function Home() {
   const [savePostList, setSavePostList] = useState<any>([]);
 
   const idUser = useSelector<IRootState, any>(state => state.auth.data.id);
+  const ban = useSelector<IRootState, any>(state => state.auth.data.ban);
+  if (ban) {
+    if (ban.includes("ACCOUNT")) {
+      return router.replace(`/settings`);
+    }
+  }
   const [postPage, setPostPage] = useState(0);
   const [hasMorePost, setHasMorePost] = useState(true);
 
@@ -48,7 +53,6 @@ export default function Home() {
 
   }, []);
   const fetchDataHomePage = async () => {
-
     const response = await postServices.getPostPage(postPage + 1, idUser);
     setPostPage(postPage + 1);
     if (response.dataPost.length > 0) {
@@ -56,9 +60,6 @@ export default function Home() {
     } else {
       setHasMorePost(false);
     }
-
-
-
   };
   useEffect(() => {
 

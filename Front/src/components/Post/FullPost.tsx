@@ -27,7 +27,7 @@ import { IRootState } from "~/redux/reducers/rootReducer";
 import friendServices from "~/services/friendServices";
 import UserCardHover from "../UserCard/UserCardHover";
 import { toast } from "react-toastify";
-// import vi from "moment/locale/vi"
+import { useRouter } from "next/navigation"
 
 const cx = classNames.bind(styles);
 interface FullPostCompProps {
@@ -42,10 +42,11 @@ interface FullPostCompProps {
   only?: any;
   published?: any;
   setPublished?: any;
+  deleteIsModal?: any;
 }
 
-const FullPostComp: FC<FullPostCompProps> = ({ setPublished, published, like, only = false, data, handleLike, likeFatherNumber, userPageLike, commentFatherNumber, setCommentFatherNumber }) => {
-
+const FullPostComp: FC<FullPostCompProps> = ({ deleteIsModal, setPublished, published, like, only = false, data, handleLike, likeFatherNumber, userPageLike, commentFatherNumber, setCommentFatherNumber }) => {
+  const router = useRouter();
   const [play, setPlay] = useState<boolean>(false);
   const [focus, setFocus] = useState<boolean>(false);
   const [comment, setComment] = useState<any>("");
@@ -55,10 +56,11 @@ const FullPostComp: FC<FullPostCompProps> = ({ setPublished, published, like, on
   const [likeModal, setLikeModal] = useState(false);
   const [userTagList, setUserTagList] = useState<any[]>([]);
   const [isPublished, setIsPublished] = useState(published !== undefined ? published : data.published);
-
+  const [deleteModal, setDeleteModal] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const language = useSelector<any>(state => state.app.language);
   const idUser = useSelector<IRootState, any>(state => state.auth.data.id);
+  const ban = useSelector<IRootState, any>(state => state.auth.data.ban);
 
   const handlePlayVideo = () => {
     if (videoRef.current !== null) {
@@ -84,6 +86,7 @@ const FullPostComp: FC<FullPostCompProps> = ({ setPublished, published, like, on
   const handleFocusInput = () => {
     setFocus(!focus);
   };
+
   const handldeCreateReply = async (commentId: any, replyComment: any, setReplyComment: any) => {
     if (replyComment !== "") {
       // console.log(commentId);
@@ -137,9 +140,34 @@ const FullPostComp: FC<FullPostCompProps> = ({ setPublished, published, like, on
     navigator.clipboard.writeText(linkCopy);
     handleClosePostModal();
   }
-  const handleSetPublish = async () => {
-    // console.log()
+  const handleOpenDeleteConfirm = () => {
+    setDeleteModal(!deleteModal);
+  }
+  const handleDeletePost = async () => {
 
+    const result = await postServices.handleDeletePost(data.id);
+    if (result.dataPost) {
+      toast.success(<FormattedMessage id="Post.Delete_success" />, {
+        autoClose: 3000
+      })
+      setDeleteModal(!deleteModal);
+      if (deleteIsModal) {
+        deleteIsModal(false);
+        const body = window.document.getElementsByTagName("body")[0];
+        body.style.overflow = "auto";
+      } else {
+        setTimeout(() => {
+          router.push('/');
+        }, 3000)
+      }
+    } else {
+      toast.success(<FormattedMessage id="Post.Delete_failed" />, {
+        autoClose: 3000
+      })
+      setDeleteModal(!deleteModal);
+    }
+  }
+  const handleSetPublish = async () => {
     const payload = {
       postId: data.id,
       published: !isPublished,
@@ -247,7 +275,7 @@ const FullPostComp: FC<FullPostCompProps> = ({ setPublished, published, like, on
                     {
                       idUser === data.author.id &&
                       <>
-                        <div className={cx("action_item")}>
+                        <div className={cx("action_item")} onClick={handleOpenDeleteConfirm}>
                           <FormattedMessage id="Common.Delete" />
                         </div>
                         {
@@ -389,7 +417,14 @@ const FullPostComp: FC<FullPostCompProps> = ({ setPublished, published, like, on
               </div>
             </div>
             <div className={cx("add_comment")}>
-              <MentionCustom tagList={userTagList} handlePushComment={handlePushComment} setContent={setComment} focus={focus} />
+              {
+                ban.includes("COMMENT") ?
+                  <div className={cx("ban_com_mes")}>
+                    <FormattedMessage id="Report.Ban_com_message" />
+                  </div>
+                  :
+                  <MentionCustom tagList={userTagList} handlePushComment={handlePushComment} setContent={setComment} focus={focus} />
+              }
             </div>
           </div>
         </div>
@@ -398,6 +433,58 @@ const FullPostComp: FC<FullPostCompProps> = ({ setPublished, published, like, on
         likeModal && (
           <div className={cx("like_modal")}>
             <LikeModalList setLikeModal={setLikeModal} idUser={idUser} data={data} />
+          </div>
+        )
+      }
+      {
+        deleteModal && (
+          <div className={cx("delete_modal")}>
+            <div className={cx("delete_wrapper")}>
+              <div className={cx("delete_content")}>
+                <div className={cx("delete_img")}>
+                  {
+                    data.typeFile === false ?
+                      <img src={data.img} /> :
+                      <video
+                        ref={videoRef}
+                        onEnded={handleSetPlay}
+                        playsInline
+                        disablePictureInPicture
+                        disableRemotePlayback
+                        preload="metadata"
+                        muted
+                        controls
+                        controlsList="nofullscreen nodownload noremoteplayback noplaybackrate">
+                        <source src={data.img} />
+                      </video>
+                  }
+                </div>
+                <div className={cx("delete_text")}>
+                  {
+                    data.content != "" &&
+                    <p >
+                      <p className={cx("name-in-content")}>
+                        <FormattedMessage id="Common.Content" /> :
+                      </p>
+                      {data.content}
+                    </p>
+
+                  }
+                </div>
+                <div className={cx("delete_message")}>
+                  <FormattedMessage id="Post.Delete_post_message" />
+
+                </div>
+              </div>
+              <div className={cx("delete_action")}>
+                <div className={cx("delete_button", "deleted")} onClick={handleDeletePost}>
+                  <FormattedMessage id="Common.Delete" />
+                </div>
+                <div className={cx("delete_button")} onClick={handleOpenDeleteConfirm}>
+                  <FormattedMessage id="Common.Cancel" />
+                </div>
+              </div>
+            </div>
           </div>
         )
       }

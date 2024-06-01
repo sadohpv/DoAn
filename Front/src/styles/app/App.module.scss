@@ -1,218 +1,221 @@
 // Layout Home Page
 .boss {
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  font-family: "IgNormal";
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    font-family: "IgNormal";
 
-  .body {
-    flex: 1;
-    // padding-left: 244px;
-    background-color: var(--background-color);
-    nav{
-      // position: fixed;
-      z-index: 1;
-      // top: 0;
+    .body {
+        flex: 1;
+        // padding-left: 244px;
+        background-color: var(--background-color);
+        nav {
+            // position: fixed;
+            z-index: 1;
+            // top: 0;
+        }
+        .wrapper {
+            padding-left: 244px;
+            background-color: var(--background-color);
+            z-index: 2;
+            .main {
+                height: 100%;
+                min-height: 100vh;
+                padding: 30px 0;
+                display: flex;
+                // justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+        }
     }
-    .wrapper {
-      padding-left: 244px;
-      background-color: var(--background-color);
-      z-index: 2;
-      .main {
-        height: 100%;
-        min-height: 100vh;
-        padding: 30px 0;
-        display: flex;
-        // justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-      }
-    }
-  }
 }
 
 @media (max-width: 1260px) {
-  .boss {
-    .body {
-      .wrapper {
-        padding-left: 72px;
-      }
+    .boss {
+        .body {
+            .wrapper {
+                padding-left: 72px;
+            }
+        }
     }
-  }
 }
 
 @media (max-width: 768px) {
-  .boss {
-    nav {
-      width: 100%;
-      height: 48px;
-      bottom: 0;
-      min-width: 100%;
-      //   max-height: 48px;
+    .boss {
+        nav {
+            width: 100%;
+            height: 48px;
+            bottom: 0;
+            min-width: 100%;
+            //   max-height: 48px;
+        }
+        .body {
+            padding-left: 0;
+            .wrapper {
+                padding-left: 0;
+                padding-bottom: 48px;
+            }
+        }
     }
-    .body {
-      padding-left: 0;
-      .wrapper {
-        padding-left: 0;
-        padding-bottom: 48px;
-      }
+    .main {
+        margin-top: 48px;
     }
-  }
-  .main {
-    margin-top: 48px;
-    
-  }
 }
 // Content Home Page
 
 .wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  .main {
-    height: 1000px;
-    min-height: 100vh;
-
-    // width: 630px;
     flex: 1;
-    background-color: var(--background-color);
-  }
-  .sub_main {
-    width: 315px;
-    height: 100%;
-    background-color: var(--background-color);
-  }
+    display: flex;
+    justify-content: center;
+    .main {
+        height: 1000px;
+        min-height: 100vh;
+
+        // width: 630px;
+        flex: 1;
+        background-color: var(--background-color);
+    }
+    .sub_main {
+        width: 315px;
+        height: 100%;
+        background-color: var(--background-color);
+    }
 }
 
 // Submain
 
 .sub_main {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0 64px 0 24px;
-  box-sizing: initial;
-  // gap: 10px;
-  .sub_header {
-    width: 100%;
-    height: 76px;
     display: flex;
-    align-items: flex-end;
-    padding-bottom: 4px;
-    box-sizing: border-box;
-    color: var(--text-color);
-
-    :first-child {
-      width: 44px;
-      height: 44px;
-    }
-    .header_infor {
-      flex: 1;
-      margin-left: 12px;
-      height: 44px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .text {
-        font-size: 14px;
-        line-height: 22px;
-        &:nth-child(1) {
-          font-weight: 600;
-        }
-        width: 100%;
-        flex: 1;
-      }
-    }
-  }
-
-  .sub_footer {
-    width: 100%;
-    height: 100px;
-    margin-top: 20px;
-    display: flex;
+    align-items: center;
     flex-direction: column;
-    justify-content: space-between;
-    font-size: 12px;
-    user-select: none;
-    position: relative;
-
-    &:before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      background-color: var(--nav-shadow);
-      top: 0;
-      left: 0;
-    }
-    .sologan {
-      margin-top: 8px;
-      text-align: justify;
-      z-index: 0;
-      .quote {
+    padding: 0 64px 0 24px;
+    box-sizing: initial;
+    position: sticky;
+    top: 0;
+    // right: 0;
+    .sub_header {
+        width: 100%;
+        height: 76px;
         display: flex;
-        font-size: 12px;
+        align-items: flex-end;
+        padding-bottom: 4px;
+        box-sizing: border-box;
         color: var(--text-color);
-      }
-    }
-    .copyright {
-      display: flex;
-      align-items: center;
-      gap: 6px;
 
-      .copyright_title {
-        color: var(--text-color);
-        line-height: 18px;
-      }
+        :first-child {
+            width: 44px;
+            height: 44px;
+        }
+        .header_infor {
+            flex: 1;
+            margin-left: 12px;
+            height: 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .text {
+                font-size: 14px;
+                line-height: 22px;
+                &:nth-child(1) {
+                    font-weight: 600;
+                }
+                width: 100%;
+                flex: 1;
+            }
+        }
     }
-  }
+
+    .sub_footer {
+        width: 100%;
+        height: 100px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 12px;
+        user-select: none;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: var(--nav-shadow);
+            top: 0;
+            left: 0;
+        }
+        .sologan {
+            margin-top: 8px;
+            text-align: justify;
+            z-index: 0;
+            .quote {
+                display: flex;
+                font-size: 12px;
+                color: var(--text-color);
+            }
+        }
+        .copyright {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            .copyright_icon {
+                display: flex;
+                align-items: center;
+            }
+            .copyright_title {
+                color: var(--text-color);
+                line-height: 18px;
+            }
+        }
+    }
 }
 
 .sub_body {
-  width: 100%;
-  flex: 1;
+    width: 100%;
+    flex: 1;
 
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  .recommend {
-    margin-top: 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--text-color);
-    position: relative;
+    flex-direction: column;
+    gap: 10px;
+    .recommend {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--text-color);
+        position: relative;
 
-    &:before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      background-color: var(--nav-shadow);
-      bottom: 0;
-      left: 0;
-    }
-    .recommend_title {
-      font-family: IgMedium;
-      user-select: none;
-    }
-    .recommend_button {
-      // font-family: IgLight;
-      color: var(--text-color);
-      cursor: pointer;
-      span {
-        &:hover {
-          text-decoration: underline;
-          color: var(--primary-color);
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: var(--nav-shadow);
+            bottom: 0;
+            left: 0;
         }
-      }
+        .recommend_title {
+            font-family: IgMedium;
+            user-select: none;
+        }
+        .recommend_button {
+            // font-family: IgLight;
+            color: var(--text-color);
+            cursor: pointer;
+            span {
+                &:hover {
+                    text-decoration: underline;
+                    color: var(--primary-color);
+                }
+            }
+        }
     }
-  }
-  .recommend_item {
-    display: flex;
-    justify-content: space-between;
-  }
+    .recommend_item {
+        display: flex;
+        justify-content: space-between;
+    }
 }

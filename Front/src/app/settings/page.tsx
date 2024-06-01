@@ -2,7 +2,6 @@
 import classNames from "classnames/bind";
 import styles from "$app/settings/SettingPage.module.scss";
 import { FormattedMessage } from "react-intl";
-import Avatar from "~/components/Avatar/Avatar";
 import { useSelector } from "react-redux";
 import { IRootState } from "~/redux/reducers/rootReducer";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -16,12 +15,16 @@ export default function SettingPage() {
 
   const idUser = useSelector<IRootState, any>(state => state.auth.data.id);
 
+
   const [data, setData] = useState<any>({});
   const [userName, setUserName] = useState("");
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState(false);
   const [editInput, setEditInput] = useState(0);
   const [avatar, setAvatar] = useState("");
+
+
+ 
   async function fetchData() {
     const result = await userServices.getDataForSetting(idUser);
     setData(result)
@@ -121,7 +124,7 @@ export default function SettingPage() {
       })
       fetchData();
     } else {
-      toast.success(<FormattedMessage id="Settings.Change_data_message_failed" />, {
+      toast.error(<FormattedMessage id="Settings.Change_data_message_failed" />, {
         autoClose: 3000
       })
       setUserName(data.userName);

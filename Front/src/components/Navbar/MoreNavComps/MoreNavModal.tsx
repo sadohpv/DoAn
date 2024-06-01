@@ -5,7 +5,7 @@ import styles from "./MoreNavComp.module.scss";
 import { FC, useState } from "react";
 import TooltipCustom from "~/utility/Tippy/TooltipCustom";
 import { FormattedMessage } from "react-intl";
-import { LanguageIcon, LogoutIcon, MoonIcon, SaveFillIcon, WriteIcon } from "~/assets/icon";
+import { AdminIcon, LanguageIcon, LogoutIcon, MoonIcon, SaveFillIcon, WriteIcon } from "~/assets/icon";
 import TippyCustom from "~/utility/Tippy/TooltipCustom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -28,6 +28,7 @@ const MoreNavModal: FC<MoreNavModalProps> = ({ }) => {
   const slug = useSelector<IRootState, any>(state => state.auth.data.slug);
   const avatar = useSelector<IRootState, any>(state => state.auth.data.avatar);
   const name = useSelector<IRootState, any>(state => state.auth.data.userName);
+  const role = useSelector<IRootState, any>(state => state.auth.data.role);
 
 
   const dispatch = useDispatch<any>();
@@ -138,6 +139,19 @@ const MoreNavModal: FC<MoreNavModalProps> = ({ }) => {
             <FormattedMessage id="Navbar.logout" />
           </div>
         </div>
+        {
+          role === 'ADMIN' &&
+          <Link href={`/admin`} className={cx("more_item")}>
+
+            <div className={cx("more_icon")}>
+              <AdminIcon />
+            </div>
+            <div className={cx("more_title")}>
+              <FormattedMessage id="Common.Management" />
+
+            </div>
+          </Link>
+        }
         <Link href={`/${slug}`} className={cx("more_item")}>
 
           <div className={cx("more_icon")}>

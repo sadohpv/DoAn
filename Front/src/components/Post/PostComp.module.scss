@@ -352,3 +352,69 @@
         }
     }
 }
+
+.report_wrapper {
+    width: 400px;
+    height: 258px;
+    background-color: var(--background-color);
+    box-shadow: 1px 1px 1px var(--modal-shadow);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    .reason {
+        color: var(--text-color);
+        input {
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color) !important;
+            accent-color: var(--primary-color) !important;
+            // color:
+            & + label::before {
+                background-color: white !important;
+            }
+            &:checked {
+                &::before {
+                    background-color: white !important;
+                }
+            }
+        }
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        height: 36px;
+        // background-color: white;
+        align-items: center;
+    }
+    .report_action {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .report_button {
+        cursor: pointer;
+        width: 45%;
+        padding: 8px 16px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        font-family: IgMedium;
+        justify-content: center;
+        background-color: rgb(255, 231, 231);
+        border: 1px solid red;
+        color: red;
+        &:hover {
+            background-color: rgb(255, 159, 159);
+            color: white;
+        }
+    }
+    .cancel {
+        background-color: rgb(218, 218, 218);
+        color: rgb(0, 0, 0);
+        border: 1px solid black;
+        &:hover {
+            background-color: rgb(19, 19, 19);
+            color: white;
+        }
+    }
+}

@@ -11,7 +11,7 @@ function toggleLikeComment(createLikeCommentDto: any) {
 }
 
 function deleteComment(id: any) {
-    return axios.delete(`/comment/${id}`);
+    return axios.delete<any,any>(`/comment/${id}`);
 }
 function editComment(editCommentDto: any) {
     return axios.patch(`/comment/edit`, editCommentDto);

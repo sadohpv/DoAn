@@ -19,22 +19,21 @@ interface NotifyBoxProps {
 }
 
 const NotifyBox: FC<NotifyBoxProps> = ({ data, unread, setReload, onHover }) => {
-    console.log(data);
+
     const language = useSelector<any>(state => state.app.language);
     const handleHover = async () => {
-        if (unread) {
-            onHover(data.id);
+        if (data.type !== "LIKECOMMENT" && data.type !== "LIKEPOST") {
+            if (unread) {
+                onHover(data.id);
+            }
         }
     }
 
     const handleToPostPage = () => {
-
         if (data.type === "COMMENT") {
             if (data.content.split(' ')[1]) {
-
                 window.location.replace(`/post/${data.content.split(' ')[1]}`);
             }
-
         }
     }
     return (
@@ -51,7 +50,7 @@ const NotifyBox: FC<NotifyBoxProps> = ({ data, unread, setReload, onHover }) => 
                         <Avatar src={data.UserFrom.avatar} link={data.UserFrom.slug} size={42} />
                     }
                 </div>
-                <div className={cx("infor")} >
+                <div className={cx("infor", (data.type === 'LIKECOMMENT' || data.type === 'LIKEPOST') && "ban_message")} >
                     {
                         data.type === 'ADDFRIEND' &&
                         <div className={cx("message")}>
@@ -64,13 +63,33 @@ const NotifyBox: FC<NotifyBoxProps> = ({ data, unread, setReload, onHover }) => 
                     }
                     {
                         data.type === 'COMMENT' &&
-
-
                         <div className={cx("message")} >
                             <a href={`/${data.UserFrom.slug}`} className={cx("link")}>
                                 {data.UserFrom.userName}
                             </a>
                             <FormattedMessage id="Notify.comment_tag_1" />
+                        </div>
+
+                    }
+                    {
+                        data.type === 'LIKECOMMENT' &&
+                        <div className={cx("message")} >
+                            <FormattedMessage id="Notify.commen_ban" />
+                            <p className={cx("note")}>
+                                <FormattedMessage id="Notify.remove_unban" /> 
+                            </p>
+
+                        </div>
+
+                    }
+                    {
+                        data.type === 'LIKEPOST' &&
+                        <div className={cx("message")} >
+                            <FormattedMessage id="Notify.post_ban" />
+                            <p className={cx("note")}>
+                                <FormattedMessage id="Notify.remove_unban" /> 
+                            </p>
+
                         </div>
 
                     }

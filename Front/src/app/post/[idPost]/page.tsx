@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import classNames from "classnames/bind";
 import styles from "$app/post/PostPage.module.scss";
 import { useEffect, useState } from "react";
@@ -9,26 +9,30 @@ import { IRootState } from "~/redux/reducers/rootReducer";
 import FullPostComp from "~/components/Post/FullPost";
 import { LockIcon } from "~/assets/icon";
 import { FormattedMessage } from "react-intl";
+import { ToastContainer } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
 export default function PostPage({ params }: { params: { idPost: string } }) {
+    const router = useRouter();
     const idUser = useSelector<IRootState, any>(state => state.auth.data.id);
     const [data, setData] = useState<any>({});
-    // const [likeFatherNumber, setLikeFatherNumber] = useState(0);
     const [listLike, setListLike] = useState([]);
     const [like, setLike] = useState<boolean>(false);
     const [likeNumber, setLikeNumber] = useState<number>(0);
     const [commentNumber, setCommentNumber] = useState<number>(0);
-    // const [actionModal, setActionModal] = useState(false);
-    // const [likeModal, setLikeModal] = useState(false);
     const [nullPost, setNullPost] = useState(false);
+    const ban = useSelector<IRootState, any>(state => state.auth.data.ban);
+    if (ban) {
+        if (ban.includes("ACCOUNT")) {
+            return router.replace(`/settings`);
+        }
+    }
     useEffect(() => {
         async function fetchDataPost() {
             if (typeof +params.idPost === "number") {
 
                 const result = await postServices.getPostById(+params.idPost, idUser)
-                console.log(result);
                 if (result.dataPost) {
                     setData(result.dataPost);
                     setLikeNumber(result.dataPost.likeNumber)
@@ -39,7 +43,7 @@ export default function PostPage({ params }: { params: { idPost: string } }) {
                     setNullPost(true);
                 } else {
                     // window.location.replace('/post');
-
+                    router.push('/');
                 }
             }
         }
@@ -58,7 +62,6 @@ export default function PostPage({ params }: { params: { idPost: string } }) {
         }
         const result = await postServices.handleToggleLikePost(payload);
         if (like === true) {
-
             setLikeNumber(likeNumber - 1);
         } else {
 
@@ -68,14 +71,11 @@ export default function PostPage({ params }: { params: { idPost: string } }) {
     };
     return (
         <>
-        
             {
                 data.id && (
                     <div className={cx("wrapper")}>
-
                         <div className={cx("main")}>
                             <FullPostComp only={true} handleLike={handleLike} likeList={listLike} commentFatherNumber={commentNumber} setCommentFatherNumber={setCommentNumber} like={like} likeFatherNumber={likeNumber} data={data} />
-
                         </div>
                     </div>
                 )
@@ -101,6 +101,7 @@ export default function PostPage({ params }: { params: { idPost: string } }) {
                 </div >
 
             }
+            <ToastContainer />
         </>
     )
 }

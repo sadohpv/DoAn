@@ -23,7 +23,12 @@ export default function SavePage({ params }: { params: { user: string } }) {
     const idUser = useSelector<IRootState, any>(state => state.auth.data.id);
     const slug = useSelector<IRootState, any>(state => state.auth.data.slug);
     const router = useRouter();
-
+    const ban = useSelector<IRootState, any>(state => state.auth.data.ban);
+    if (ban) {
+        if (ban.includes("ACCOUNT")) {
+            return router.replace(`/settings`);
+        }
+    }
     useEffect(() => {
         async function fetchData() {
             const result = await userServices.getDataForUserPage(params.user, idUser);
@@ -32,24 +37,21 @@ export default function SavePage({ params }: { params: { user: string } }) {
         }
         if (idUser) {
             if (params.user === slug) {
-
                 fetchData();
                 getSavePost();
                 setLoading(true);
             } else {
-                router.push(`/${slug}/save`)
+                router.replace(`/${slug}/save`)
             }
 
         }
         async function getSavePost() {
             const postList = await postServices.handleGetSavePost(params.user, idUser);
             if (postList) {
-                console.log(postList);
                 setListPost(postList.dataPost);
                 setLikeList(postList.checkLike);
             }
         }
-
     }, [idUser])
 
     return (

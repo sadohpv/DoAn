@@ -18,7 +18,6 @@ export default function SettingPostPage() {
     useEffect(() => {
         async function fetchData() {
             const result = await postServices.getAllPostSetting(idUser);
-            console.log(result);
             setListData(result.dataPost);
         }
         if (idUser) {

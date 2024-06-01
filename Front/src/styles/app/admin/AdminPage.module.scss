@@ -1,5 +1,463 @@
 .wrapper {
-    min-width: 100vw;
-    min-height: 100vh;
-    color: var(--text-color);
+    // background-color: red;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+.auto_size {
+    width: auto !important;
+    height: 360px !important;
+    box-shadow: 1px 1px 2px var(--nav-shadow);
+    overflow: hidden !important;
+    border-radius: 12px;
+    // border: 1px solid aquamarine;
+}
+.list {
+    // width: 100% !important;
+    height: 360px !important;
+    background-color: var(--background-color);
+    // border-radius: 12px;
+    padding: 16px;
+    // top: 16px;
+    // display: flex;
+    // flex-direction: column;
+}
+.item {
+    // position: relative !important;
+    width: 100%;
+    // background-color: aqua;
+    width: calc(100% - 26px) !important;
+    left: 16px !important;
+    height: 64px !important;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    justify-content: space-between;
+    div {
+        flex: 1;
+    }
+    .gender {
+        width: 50px;
+        flex: none;
+        color: var(--text-color);
+    }
+    .text {
+        // min-width: 120px;
+        // max-width: 160px;
+
+        color: var(--text-color);
+        font-family: IgMedium;
+    }
+    .avatar {
+        width: 40px;
+        flex: none;
+    }
+    .function {
+        flex: none;
+        cursor: pointer;
+    }
+    .infor {
+        display: flex;
+        gap: 15px;
+        position: relative;
+        &::before {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            left: -10px;
+            width: 0.5px;
+            height: 100%;
+            background-color: var(--grey-fade);
+        }
+        .infor_item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            width: 60px;
+            color: var(--primary-color);
+            span {
+                color: var(--text-color);
+
+                font-size: 14px;
+                font-family: IgMedium;
+            }
+        }
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        bottom: -5px;
+        left: 0px;
+        width: 100%;
+        height: 0.5px;
+        background-color: var(--text-color);
+    }
+}
+
+.report_number {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: red;
+
+    .number {
+        height: 18px;
+        min-width: 18px;
+        padding: 0 4px;
+        font-size: 13px;
+        border-radius: 66px;
+        background-color: rgb(255, 223, 223);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: IgMedium;
+        border: 1px solid red;
+    }
+    &.ban_status {
+        color: var(--ban-color);
+
+        .number {
+            background-color: rgb(255, 255, 255);
+            color: var(--ban-color);
+            border: 1px solid var(--ban-color);
+        }
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: -10px;
+        width: 0.5px;
+        height: 100%;
+        background-color: var(--grey-fade);
+    }
+}
+.action {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    &:hover {
+        color: var(--background-color);
+        background-color: var(--primary-color-hover);
+    }
+}
+
+.filter {
+    display: flex;
+    // height: 48px;
+    // background-color: azure;
+    align-items: center;
+    gap: 30px;
+    input {
+        box-shadow: 1px 1px 2px var(--nav-shadow);
+        border-radius: 8px;
+        height: 32px;
+        width: 30%;
+        min-width: 160px;
+        max-width: 260px;
+        padding: 0 12px;
+        outline: none;
+    }
+
+    .sort_button {
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--primary-color-hover);
+        }
+    }
+}
+
+//Report
+
+.report_list {
+    // background-color: yellow;
+    height: 416px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // padding: 16px;
+    overflow: hidden;
+    box-shadow: 0px 0px 3px 0px var(--text-color);
+    // border: 1px solid
+}
+.report_wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .report_header {
+        // background-color:
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        position: relative;
+        box-shadow: 0px 0px 4px 1px var(--nav-shadow);
+        .text {
+            font-size: 16px;
+            font-family: IgMedium;
+            display: flex;
+            flex-direction: column;
+            .name {
+                // text-align: right;
+                position: relative;
+                &::before {
+                    width: 100%;
+                    background-color: var(--text-color);
+                    height: 0.5px;
+                    content: "";
+                    position: absolute;
+                    bottom: -0.5px;
+                    left: 0;
+                }
+            }
+        }
+        .report_action {
+            flex: 1;
+            // background-color: red;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            align-items: center;
+            .report_action-button {
+                padding: 0px 16px;
+                cursor: pointer;
+                box-sizing: border-box;
+                height: 36px;
+                background-color: rgb(255, 193, 193);
+                border-radius: 8px;
+                color: red;
+                border: 1px solid red;
+                display: flex;
+                align-items: center;
+                &:hover {
+                    background-color: rgb(255, 111, 111);
+                    color: white;
+                }
+            }
+            .unban {
+                background-color: rgb(200, 255, 193);
+                color: green;
+                border: 1px solid green;
+
+                &:hover {
+                    background-color: rgb(89, 212, 37);
+                    color: white;
+                }
+            }
+        }
+    }
+    .report_body {
+        flex: 1;
+        display: flex;
+        // background-color: red;
+        z-index: 2;
+        .report_total {
+            width: auto;
+            box-shadow: 0px 5px 4px 2px var(--nav-shadow);
+            // border-right: 3px solid var(--grey-fade);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            .report_total-item {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                font-size: 16px;
+                gap: 12px;
+                padding: 16px;
+                .number {
+                    height: 24px;
+                    min-width: 24px;
+                    border-radius: 20px;
+                    display: flex;
+                    font-family: IgMedium;
+                    font-size: 16px;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(255, 250, 250);
+                    color: red;
+                    border: 1px solid red;
+                }
+                .clean {
+                    background-color: rgb(223, 255, 184);
+                    color: green;
+                    border: 1px solid green;
+                }
+            }
+        }
+        .report_detail {
+            height: 100%;
+            flex: 1;
+
+            display: flex;
+
+            .report_detail-list {
+                display: flex;
+                width: 100%;
+                height: 320px;
+                padding: 12px 12px 0 12px;
+                overflow: hidden scroll;
+                flex-direction: column;
+                gap: 2px;
+                .report_list-item:nth-child(even) {
+                    background-color: var(--even-color);
+                }
+                .report_list-item {
+                    display: flex;
+                    align-items: center;
+                    // min-height: 48px !important;
+                    // max-height: 48px !important;
+
+                    padding: 4px 16px;
+                    justify-content: space-between;
+                    gap: 16px;
+                    position: relative;
+                    .avatar_report {
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        object-fit: cover;
+                    }
+                    .rule_number {
+                        flex: 1;
+                    }
+                    &::before {
+                        position: absolute;
+                        content: "";
+                        height: 0.5px;
+                        width: 100%;
+                        background-color: var(--grey-fade);
+                        right: 0;
+                        bottom: -1px;
+                    }
+                }
+                .empty_report {
+                    height: 100%;
+                    width: 100%;
+                    // background-color: red;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                    .empty_report-text {
+                        font-family: IgMedium;
+                        font-size: 20px;
+                        color: green;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.choose_some_one {
+    width: 100%;
+    height: 100%;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 24px;
+    font-family: IgMedium;
+}
+.unban_modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(229, 229, 229, 0.304);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .confirm_unban {
+        width: 240px;
+        height: 136px;
+        background-color: var(--background-color);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        .confirm_unban-title {
+            color: var(--text-color);
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+        .confirm_unban-input {
+            width: 100%;
+            height: 32px;
+            display: flex;
+            input {
+                outline: none;
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+                box-shadow: 1px 1px 2px 0px var(--nav-shadow);
+                padding: 0 8px;
+            }
+        }
+        .confirm_unban-action {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            // background-color: red;
+            width: 100%;
+            .unban_ok {
+                height: 32px;
+                width: 45%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                cursor: pointer;
+                background-color: var(--primary-color);
+                color: var(--text-color);
+                border: 1px solid rgb(0, 0, 0);
+                &:hover {
+                    background-color: rgb(209, 255, 209);
+                    color: green;
+                    border: 1px solid green;
+                }
+            }
+            .unban_cancel {
+                background-color: rgb(221, 221, 221);
+
+                &:hover {
+                    background-color: rgb(198, 198, 198);
+                    color: var(--text-color);
+                    border: 1px solid var(--text-color);
+                }
+            }
+        }
+    }
 }

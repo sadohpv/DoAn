@@ -40,6 +40,9 @@
   --grey-fade             : rgb(62, 62, 62);
   --modal-shadow          : black;
   --unread-color          : black;
+  --even-color            : #242424;
+  --ban-color             : green;
+
 }
 
 
@@ -140,7 +143,9 @@ nav {
   --modal-shadow          : rgb(129, 129, 129);
   --modal-hover           : #9ed3ff;
   --unread-color          : white;
-
+  --even-color            : rgb(241, 241, 241);
+  --ban-color             : green;
+  --full-modal            : rgba(255, 255, 255, 0.436);
 }
 
 .theme-dark {
@@ -156,7 +161,7 @@ nav {
   position        : absolute;
   top             : 0;
   right           : 0;
-
+  z-index         : 1000000;
 }
 
 video::-webkit-media-controls-fullscreen-button,

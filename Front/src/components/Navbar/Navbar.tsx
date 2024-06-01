@@ -3,11 +3,9 @@ import Link from "next/link";
 import classNames from "classnames/bind";
 import styles from "./styles/Navbar.module.scss";
 import {
-  CreateIcon,
-  HeartIcon,
   HomeIcon,
   LogoIcon,
-  SearchIcon,
+
 } from "~/assets/icon";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -16,20 +14,23 @@ import SearchComp from "./SearchComps/SearchComp";
 import CreateComp from "./CreateComps/CreateComp";
 import MoreNavComp from "./MoreNavComps/MoreNavComp";
 import { useWindowSize } from "usehooks-ts";
-import TooltipCustom from "~/utility/Tippy/TooltipCustom";
-import TippyCustom from "~/utility/Tippy/TooltipCustom";
 import { FormattedMessage } from "react-intl";
+import { useSelector } from "react-redux";
+import { IRootState } from "~/redux/reducers/rootReducer";
 
 const cx = classNames.bind(styles);
 
 function Navbar() {
+
   const [page, setPage] = useState<number>(0);
   const [modal, setModal] = useState<boolean>(false);
   const [tippy, setTippy] = useState<boolean | null>(false);
   const [navLast, setNavLast] = useState<boolean | null>(true);
   const { width = 0, height = 0 } = useWindowSize();
-  const router = usePathname();
+  const pathname = usePathname();
 
+
+  const ban = useSelector<IRootState, any>(state => state.auth.data.ban);
   const handleNavigate = () => {
     if (page !== 0) {
       setPage(0);
@@ -73,7 +74,7 @@ function Navbar() {
     }
   }, [width]);
   return (
-    <div className={cx("navbar", modal && "short")}>
+    <div className={cx("navbar", modal && "short", ban.includes("ACCOUNT") && "ban_account")}>
       <div className={cx("nav_first")}>
         <Link href={"/"} onClick={handleNavigate}>
           <div className={cx("logo")}>
@@ -87,15 +88,15 @@ function Navbar() {
         </Link>
         <div className={cx("nav_box")}>
           <Link
-            className={cx("nav_item", page === 0 && router === "/" && "disable")}
+            className={cx("nav_item", page === 0 && pathname === "/" && "disable")}
             href={"/"}
             onClick={handleNavigate}
           >
             <div className={cx("icon")}>
-              {page === 0 && router === "/" && (
+              {page === 0 && pathname === "/" && (
                 <HomeIcon fill={"var(--text-color)"} />
               )}
-              {(page !== 0 || router !== "/") && <HomeIcon />}
+              {(page !== 0 || pathname !== "/") && <HomeIcon />}
             </div>
             <span>
               <FormattedMessage id="Navbar.home" />
@@ -117,14 +118,16 @@ function Navbar() {
             modal={modal}
             tippy={tippy}
           />
-
-          <CreateComp
-            page={page}
-            setPage={setPage}
-            setModal={setModal}
-            modal={modal}
-            tippy={tippy}
-          />
+          {
+            !ban.includes("POST") &&
+            <CreateComp
+              page={page}
+              setPage={setPage}
+              setModal={setModal}
+              modal={modal}
+              tippy={tippy}
+            />
+          }
         </div>
       </div>
       {navLast === true && (

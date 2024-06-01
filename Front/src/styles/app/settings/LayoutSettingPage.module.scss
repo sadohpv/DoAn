@@ -55,7 +55,6 @@
             &:hover {
                 background-color: var(--primary-color-hover);
                 color: var(--background-color);
-               
             }
         }
         .active {
@@ -92,5 +91,61 @@
         padding-left: 0px;
         padding-top: 48px;
         padding-bottom: 48px;
+    }
+}
+.main_bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.complain_box {
+    width: 100%;
+    flex: 1;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    max-width: 220px;
+    padding: 0;
+    .complain_content {
+        color: red;
+        text-align: center;
+    }
+    .complain_input {
+        width: 100%;
+        height: 32px;
+        background-color: red;
+        display: flex;
+        box-shadow: 1px 1px 2px 0px var(--text-color);
+        animation: slide_in 0.25s ease-in-out forwards;
+        input {
+            width: 100%;
+            outline: none;
+            padding: 0 8px;
+        }
+    }
+}
+.complain_button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--primary-color-hover);
+    }
+}
+@keyframes slide_in {
+    from {
+        margin-left: 24px;
+    }
+    to {
+        margin-left: 0px;
     }
 }
